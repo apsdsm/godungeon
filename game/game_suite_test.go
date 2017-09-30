@@ -23,5 +23,5 @@ import (
 
 func TestMaps(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Maps Suite")
+	RunSpecs(t, "Game Suite")
 }
