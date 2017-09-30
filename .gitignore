@@ -1,0 +1,8 @@
+# ide settings
+.idea
+
+# os files
+.DS_Store
+
+# vim
+*.swp
