@@ -16,13 +16,7 @@ package game
 
 // Key is a placeholder for key game in a level
 type Key struct {
-
-	// displayed name
 	Name string
-
-	// physical name
 	Link string
-
-	// description
 	Desc string
 }

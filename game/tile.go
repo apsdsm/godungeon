@@ -14,10 +14,16 @@
 
 package game
 
-// A Tile is a single tile in a map
+// A tile is a single tile in a map
 type Tile struct {
-	Rune     rune
-	Walkable bool
-	Spawn    string
-	Occupant Actor
+	Rune      rune
+	Walkable  bool
+	Spawn     string
+	Occupant  *Actor
+	Position  Position
+	Neighbors [8]*Tile
+}
+
+func (t *Tile) Neighbor(direction Direction) *Tile {
+	return t.Neighbors[direction]
 }

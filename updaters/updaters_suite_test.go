@@ -1,4 +1,4 @@
-package actor_controller
+package updaters
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestActorController(t *testing.T) {
+func TestUpdaters(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "ActorController Suite")
+	RunSpecs(t, "Updater Suite")
 }

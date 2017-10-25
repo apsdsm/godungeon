@@ -12,28 +12,32 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-package render
+package dungeon_renderer
 
 import (
 	"github.com/apsdsm/canvas"
 	"github.com/apsdsm/godungeon/game"
 )
 
-// A MapRenderer renders the map portion of a actor to a layer
-type MapRenderer struct {
+// A DungeonRenderer renders the map portion of a actor to a layer
+type DungeonRenderer struct {
+	dungeon *game.Dungeon
+	layer   *canvas.Layer
 }
 
-// NewMapRenderer creates and returns a pointer to a new MapDislayer object
-func NewMapRenderer() *MapRenderer {
-	d := MapRenderer{}
+// New creates and returns a pointer to a new MapDislayer object
+func New(dungeon *game.Dungeon, layer *canvas.Layer) *DungeonRenderer {
+	d := DungeonRenderer{}
+	d.dungeon = dungeon
+	d.layer = layer
 	return &d
 }
 
-// DrawMap will draw te map part of a dugeon to a layer
-func (d *MapRenderer) DrawMap(dungeon *game.Map, layer *canvas.Layer) {
-	for x := range dungeon.Tiles {
-		for y := range dungeon.Tiles[x] {
-			layer.Grid[x][y].Rune = dungeon.Tiles[x][y].Rune
+// Render the map to the screen
+func (d *DungeonRenderer) Render() {
+	for x := 0; x < len(d.dungeon.Tiles); x++ {
+		for y := 0; y < len(d.dungeon.Tiles[x]); y++ {
+			d.layer.Grid[x][y].Rune = d.dungeon.Tiles[x][y].Rune
 		}
 	}
 }

@@ -8,64 +8,73 @@ import (
 
 	"github.com/gdamore/tcell"
 
-	"github.com/apsdsm/godungeon/render"
-
-	"github.com/apsdsm/godungeon/io"
+	"github.com/apsdsm/godungeon/controllers"
+	"github.com/apsdsm/godungeon/file"
+	"github.com/apsdsm/godungeon/game"
+	"github.com/apsdsm/godungeon/input"
+	"github.com/apsdsm/godungeon/renderers/actor_renderer"
+	"github.com/apsdsm/godungeon/renderers/dungeon_renderer"
+	"github.com/apsdsm/godungeon/updaters"
 )
 
 func main() {
+	// initialize the screen
 	screen, width, height := createAndInitScreen()
 
+	// create game canvas and layers
 	gameCanvas := canvas.NewCanvas(screen)
-
 	mapLayer := canvas.NewLayer(width, height, 0, 0)
 	entityLayer := canvas.NewLayer(width, height, 0, 0)
+	gameCanvas.AddLayer(&mapLayer)
+	gameCanvas.AddLayer(&entityLayer)
 
-	gameCanvas.AddLayer(mapLayer)
-	gameCanvas.AddLayer(entityLayer)
+	// load map
+	dungeon := file.LoadMap("fixtures/maps/simple.json")
 
-	dungeon := io.LoadMap("fixtures/game/simple.json")
+	// setup an input handler
+	inputHandler := input.NewHandler(screen)
 
-	mapRenderer := render.NewMapRenderer()
-	entityRenderer := render.NewEntityRenderer()
+	// set up map renderer
+	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
 
-	mapRenderer.DrawMap(&dungeon, mapLayer)
-	entityRenderer.DrawPlayer(&dungeon.Player, entityLayer)
+	// set up entity renderer
+	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
 
+	// set up a player
+	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler)
+	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
+	player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
+	player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)
+	player.BindMovement(input.NewKey(input.KeyLeft, 0), game.W)
+
+	// initial render of content to layers
+	mapRenderer.Render()
+	entityRenderer.Render()
 	gameCanvas.Draw()
 
-	// main game loop
+	// make controllers used directly in scene (this should be moved to an updated)
+	game := controllers.NewGameController(screen)
+
+	// main game loop <- move this logic into a specific scene object, rather than the main loop
 	for {
-		event := screen.PollEvent()
 
-		switch e := event.(type) {
+		// update input (I wish this were in an actual game loop object)
+		inputHandler.Update()
 
-		case *tcell.EventKey:
-			if e.Key() == tcell.KeyRune && string(e.Rune()) == "q" {
-				screen.Fini()
-				os.Exit(0)
-			}
-			if e.Key() == tcell.KeyLeft {
-				dungeon.Player.CurrentPosition.X--
-				entityRenderer.DrawPlayer(&dungeon.Player, entityLayer)
-				gameCanvas.Draw()
-			}
-			if e.Key() == tcell.KeyRight {
-				dungeon.Player.CurrentPosition.X++
-				entityRenderer.DrawPlayer(&dungeon.Player, entityLayer)
-				gameCanvas.Draw()
-			}
-			if e.Key() == tcell.KeyUp {
-				dungeon.Player.CurrentPosition.Y--
-				entityRenderer.DrawPlayer(&dungeon.Player, entityLayer)
-				gameCanvas.Draw()
-			}
-			if e.Key() == tcell.KeyDown {
-				dungeon.Player.CurrentPosition.Y++
-				entityRenderer.DrawPlayer(&dungeon.Player, entityLayer)
-				gameCanvas.Draw()
-			}
+		// quit if user presses 'q' <- temporary code until a main menu system is in place
+		if inputHandler.HasKeyEvent(input.NewKey(input.KeyRune, 'q')) {
+			game.Quit()
 		}
+
+		// updaters <- should be triggering these from a loop
+		player.Update()
+
+		//@todo only render if dirty (move this to actor object)
+		//if dirty {
+		entityLayer.Clear()
+		entityRenderer.Render()
+		gameCanvas.Draw()
+		//}
 	}
 }
 

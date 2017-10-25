@@ -18,3 +18,8 @@ package game
 type Position struct {
 	X, Y int
 }
+
+// OutOfBounds returns true if position is out of bounds
+func (p *Position) OutOfBounds(width, height int) bool {
+	return p.X < 0 || p.Y < 0 || p.X >= width || p.Y >= height
+}

@@ -12,24 +12,31 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-package io
+package actor_renderer
 
 import (
-	"encoding/json"
-	"io/ioutil"
-
+	"github.com/apsdsm/canvas"
 	"github.com/apsdsm/godungeon/game"
 )
 
-// LoadMap will load a map file into a map object
-func LoadMap(path string) (m game.Map) {
+// An ActorRenderer renders the entity portion of a actor_controller to a layer
+type ActorRenderer struct {
+	layer  *canvas.Layer
+	actors *[]game.Actor
+}
 
-	infile, _ := ioutil.ReadFile(path)
-	json.Unmarshal(infile, &m)
+// NewEntityRenderer creates and returns a pointer to a a new ActorRenderer object
+func New(entities *[]game.Actor, layer *canvas.Layer) *ActorRenderer {
+	r := ActorRenderer{}
+	r.layer = layer
+	r.actors = entities
+	return &r
+}
 
-	// set up actor_controller
-	m.Player.CurrentPosition = m.StartPosition
-	m.Player.Rune = 'v'
-
-	return m
+// Render will send information about each entity to the assigned layer
+func (r *ActorRenderer) Render() {
+	for _, t := range *r.actors {
+		at := t.Tile.Position
+		r.layer.Grid[at.X][at.Y].Rune = t.Appearance
+	}
 }

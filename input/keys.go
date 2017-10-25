@@ -8,7 +8,7 @@ import "github.com/gdamore/tcell"
 
 // KeyCode is a generic value for representing keys.go, especially special keys.go (function keys.go, cursor movement keys.go, etc.).
 // For normal keys.go, like  ASCII letters, this values will be set to KeyRune, and the actual key pressed will be available
-// via the Rune() method of the KeyEvent interface.
+// via the rune() method of the KeyEvent interface.
 //
 // For more information see the tcell EventKey documentation: https://godoc.org/github.com/gdamore/tcell#EventKey
 type KeyCode = tcell.Key

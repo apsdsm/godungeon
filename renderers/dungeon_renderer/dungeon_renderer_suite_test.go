@@ -1,4 +1,4 @@
-package render_test
+package dungeon_renderer_test
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestRender(t *testing.T) {
+func TestDungeonRenderer(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Render Suite")
+	RunSpecs(t, "DungeonRenderer Suite")
 }

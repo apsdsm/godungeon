@@ -1,4 +1,4 @@
-package io_test
+package actor_renderer
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestIo(t *testing.T) {
+func TestEntityRenderer(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Io Suite")
+	RunSpecs(t, "Entity ActorRenderer Suite")
 }
