@@ -8,7 +8,6 @@ import (
 
 	"github.com/gdamore/tcell"
 
-	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
@@ -17,14 +16,26 @@ import (
 	"github.com/apsdsm/godungeon/updaters"
 )
 
+var (
+	screen        tcell.Screen
+	width, height int
+	gameCanvas    canvas.Canvas
+	mapLayer      canvas.Layer
+	entityLayer   canvas.Layer
+)
+
 func main() {
+	// @todo put a recover in here that will cleanly exit the game
+
 	// initialize the screen
-	screen, width, height := createAndInitScreen()
+	screen, width, height = createAndInitScreen()
 
 	// create game canvas and layers
-	gameCanvas := canvas.NewCanvas(screen)
-	mapLayer := canvas.NewLayer(width, height, 0, 0)
-	entityLayer := canvas.NewLayer(width, height, 0, 0)
+	gameCanvas = canvas.NewCanvas(screen)
+	mapLayer = canvas.NewLayer(width, height, 0, 0)
+	entityLayer = canvas.NewLayer(width, height, 0, 0)
+
+	// add layers to canvas
 	gameCanvas.AddLayer(&mapLayer)
 	gameCanvas.AddLayer(&entityLayer)
 
@@ -52,9 +63,6 @@ func main() {
 	entityRenderer.Render()
 	gameCanvas.Draw()
 
-	// make controllers used directly in scene (this should be moved to an updated)
-	game := controllers.NewGameController(screen)
-
 	// main game loop <- move this logic into a specific scene object, rather than the main loop
 	for {
 
@@ -63,18 +71,16 @@ func main() {
 
 		// quit if user presses 'q' <- temporary code until a main menu system is in place
 		if inputHandler.HasKeyEvent(input.NewKey(input.KeyRune, 'q')) {
-			game.Quit()
+			exitGame()
 		}
 
 		// updaters <- should be triggering these from a loop
 		player.Update()
 
 		//@todo only render if dirty (move this to actor object)
-		//if dirty {
 		entityLayer.Clear()
 		entityRenderer.Render()
 		gameCanvas.Draw()
-		//}
 	}
 }
 
@@ -97,4 +103,10 @@ func createAndInitScreen() (screen tcell.Screen, width, height int) {
 	width, height = screen.Size()
 
 	return screen, width, height
+}
+
+// cleanly exit the game
+func exitGame() {
+	screen.Fini()
+	os.Exit(1)
 }

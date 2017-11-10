@@ -13,7 +13,7 @@ import "github.com/gdamore/tcell"
 // For more information see the tcell EventKey documentation: https://godoc.org/github.com/gdamore/tcell#EventKey
 type KeyCode = tcell.Key
 
-// provide a subset of available keys.go
+// provide a subset of available keys
 const (
 	KeyRune KeyCode = iota + 256
 	KeyUp

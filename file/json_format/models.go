@@ -40,4 +40,8 @@ type Key struct {
 type Mob struct {
 	Name string
 	Link string
+	Prot string
+	Rune string
+	Hp   string
+	Mp   string
 }

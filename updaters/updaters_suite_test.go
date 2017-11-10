@@ -1,4 +1,4 @@
-package updaters
+package updaters_test
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestUpdaters(t *testing.T) {
+func TestPlayer(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Updater Suite")
+	RunSpecs(t, "Player Suite")
 }

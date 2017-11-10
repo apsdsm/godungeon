@@ -22,7 +22,7 @@ type ActorControllerForPlayer interface {
 }
 
 // @todo should this be defined closer to the input handler? or just make a player package?
-// InputHandlerForPlayer defines the iterface for an input handler
+// InputHandlerForPlayer defines the interface for an input handler
 type InputHandlerForPlayer interface {
 	Events() input.Events
 }

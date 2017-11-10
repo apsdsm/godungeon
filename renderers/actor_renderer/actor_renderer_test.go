@@ -31,8 +31,8 @@ var _ = Describe("ActorRenderer", func() {
 			}
 
 			actor := game.Actor{
-				Tile:       &tile,
-				Appearance: 'x',
+				Tile: &tile,
+				Rune: 'x',
 			}
 
 			entities := []game.Actor{

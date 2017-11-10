@@ -17,6 +17,7 @@ package actor_renderer
 import (
 	"github.com/apsdsm/canvas"
 	"github.com/apsdsm/godungeon/game"
+	"github.com/gdamore/tcell"
 )
 
 // An ActorRenderer renders the entity portion of a actor_controller to a layer
@@ -35,8 +36,20 @@ func New(entities *[]game.Actor, layer *canvas.Layer) *ActorRenderer {
 
 // Render will send information about each entity to the assigned layer
 func (r *ActorRenderer) Render() {
+	style := tcell.StyleDefault
 	for _, t := range *r.actors {
+
+		// choose the color for the actor based on its state
+		if t.IsPlayer {
+			style = style.Foreground(game.White)
+		} else {
+			style = style.Foreground(game.Green)
+		}
+
 		at := t.Tile.Position
-		r.layer.Grid[at.X][at.Y].Rune = t.Appearance
+		r.layer.At(at.X, at.Y).Set(
+			t.Rune,
+			style,
+		)
 	}
 }

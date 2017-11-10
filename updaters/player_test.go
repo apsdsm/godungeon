@@ -1,4 +1,4 @@
-package updaters
+package updaters_test
 
 import (
 	. "github.com/onsi/ginkgo"

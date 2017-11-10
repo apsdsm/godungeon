@@ -21,6 +21,7 @@ type Dungeon struct {
 	Link   string
 	Tiles  [][]Tile
 	Actors []Actor
+	ActorPrototypes []Actor
 }
 
 // NewDungeon generates a new dungeon initialized to the specified size
