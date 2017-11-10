@@ -8,6 +8,7 @@ import (
 
 	"github.com/gdamore/tcell"
 
+	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
@@ -42,17 +43,20 @@ func main() {
 	// load map
 	dungeon := file.LoadMap("fixtures/maps/simple.json")
 
-	// setup an input handler
-	inputHandler := input.NewHandler(screen)
-
 	// set up map renderer
 	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
 
 	// set up entity renderer
 	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
 
+	// setup an input handler
+	inputHandler := input.NewHandler(screen)
+
+	// create actor controller
+	actorController := controllers.NewActorController()
+
 	// set up a player
-	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler)
+	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
 	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
 	player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
 	player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)

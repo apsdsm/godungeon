@@ -1,7 +1,6 @@
 package updaters
 
 import (
-	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
 )
@@ -28,12 +27,16 @@ type InputHandlerForPlayer interface {
 }
 
 // NewController creates and returns a new controller
-func NewPlayer(actor *game.Actor, inputHandler InputHandlerForPlayer) Player {
+func NewPlayer(
+	actor *game.Actor,
+	inputHandler InputHandlerForPlayer,
+	controller ActorControllerForPlayer,
+) Player {
 	c := Player{}
 	c.actor = actor
 	c.inputHandler = inputHandler
 	c.boundMovements = make(map[input.Key]game.Direction)
-	c.ActorController = &controllers.ActorController{}
+	c.ActorController = controller
 
 	return c
 }

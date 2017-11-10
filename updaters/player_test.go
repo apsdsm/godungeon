@@ -7,6 +7,7 @@ import (
 	"github.com/apsdsm/godungeon/fakes"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
+	. "github.com/apsdsm/godungeon/updaters"
 )
 
 var _ = Describe("Player", func() {
@@ -31,8 +32,7 @@ var _ = Describe("Player", func() {
 		occupant = &game.Actor{}
 		actorController = &fakes.FakeActorController{}
 
-		player = NewPlayer(actor, inputHandler)
-		player.ActorController = actorController
+		player = NewPlayer(actor, inputHandler, actorController)
 		player.BindMovement(input.NewKey(input.KeyRune, 'j'), game.West)
 	})
 

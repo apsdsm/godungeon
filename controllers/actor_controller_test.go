@@ -115,7 +115,17 @@ var _ = Describe("ActorController", func() {
 			It("returns an IllegalMove error", func() {
 				Expect(err).To(BeAssignableToTypeOf(&IllegalMove{}))
 			})
+		})
+	})
 
+	// @todo implement the attack
+	Describe("Attack", func() {
+		Context("On hit", func() {
+			It("applies damage to target", func() {
+				// use fake damage calculator,
+				// create hit
+				// make sure the target actor has reduced hp
+			})
 		})
 	})
 })

@@ -6,6 +6,7 @@ type Actor struct {
 	Rune     rune
 	Tile     *Tile
 	Attack   Attack
+	Defence  Defence
 	IsPlayer bool
 	HP       int
 	MP       int

@@ -1,5 +1,7 @@
 package game
 
 type Attack struct {
-	BaseDamage int
+	MinDamage   int
+	MaxDamage   int
+	ChanceToHit int
 }
