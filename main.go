@@ -52,8 +52,11 @@ func main() {
 	// setup an input handler
 	inputHandler := input.NewHandler(screen)
 
+	// setup a damage calculator
+	damageCalculator := game.NewDamageCalculator()
+
 	// create actor controller
-	actorController := controllers.NewActorController()
+	actorController := controllers.NewActorController(&damageCalculator)
 
 	// set up a player
 	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
