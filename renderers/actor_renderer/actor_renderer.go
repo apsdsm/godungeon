@@ -40,10 +40,19 @@ func (r *ActorRenderer) Render() {
 	for _, t := range *r.actors {
 
 		// choose the color for the actor based on its state
+		// @todo this should live in some kind of method
 		if t.IsPlayer {
 			style = style.Foreground(game.White)
 		} else {
-			style = style.Foreground(game.Green)
+
+			//debug.Log(fmt.Sprintf("%+v", t))
+
+			if t.HpPercentRemaining() <= 0.10 {
+				style = style.Foreground(game.Red)
+			} else {
+				// if health is less than 10 percent, draw as red
+				style = style.Foreground(game.Green)
+			}
 		}
 
 		at := t.Tile.Position
@@ -51,5 +60,6 @@ func (r *ActorRenderer) Render() {
 			t.Rune,
 			style,
 		)
+
 	}
 }

@@ -488,7 +488,7 @@
       {
         "Rune": 32,
         "Walkable": true,
-        "Spawn": "goblin"
+        "Spawn": "goblin1"
       },
       {
         "Rune": 32,
@@ -681,7 +681,7 @@
       {
         "Rune": 32,
         "Walkable": true,
-        "Spawn": "goblin"
+        "Spawn": "goblin2"
       },
       {
         "Rune": 35,
@@ -983,7 +983,7 @@
       {
         "Rune": 32,
         "Walkable": true,
-        "Spawn": "goblin"
+        "Spawn": "goblin3"
       },
       {
         "Rune": 32,
@@ -1396,10 +1396,36 @@
   ],
   "Mobs": [
     {
-      "Name": "",
-      "Link": "goblin",
+      "Name": "Goblin 1",
+      "Link": "goblin1",
       "Prot": "",
-      "Rune": "g"
+      "Rune": "1",
+      "Hp": 10,
+      "MaxHP": 10,
+      "Mp": 0,
+      "MaxMP": 0
+    },
+
+    {
+      "Name": "Goblin 2",
+      "Link": "goblin2",
+      "Prot": "",
+      "Rune": "2",
+      "Hp": 10,
+      "MaxHP": 10,
+      "Mp": 0,
+      "MaxMP": 0
+    },
+    
+    {
+      "Name": "Goblin 3",
+      "Link": "goblin3",
+      "Prot": "",
+      "Rune": "3",
+      "Hp": 10,
+      "MaxHP": 10,
+      "Mp": 0,
+      "MaxMP": 0
     }
   ]
 }

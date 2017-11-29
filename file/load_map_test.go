@@ -70,15 +70,17 @@ var _ = Describe("MapLoader", func() {
 		})
 
 		It("initializes mobs", func() {
-			// need to work on the mob export code first...
 			source := "../fixtures/maps/mobs.json"
 			dungeon = file.LoadMap(source)
 
-			Expect(len(dungeon.Actors)).To(Equal(2))                   // the player and the goblin
-			Expect(dungeon.Actors[1].Rune).To(Equal('m'))              // should get rune data from prototype
-			Expect(dungeon.Actors[1].HP).To(Equal(10))                 // should get rune data from prototype
-			Expect(dungeon.Actors[1].MP).To(Equal(20))                 // should get rune data from prototype
-			Expect(dungeon.Actors[1].Tile).To(Equal(dungeon.At(3, 2))) // should set tile for mob
+			Expect(len(dungeon.Actors)).To(Equal(2))
+			Expect(dungeon.Actors[1].Rune).To(Equal('m'))
+			Expect(dungeon.Actors[1].Tile).To(Equal(dungeon.At(3, 2)))
+			Expect(dungeon.Actors[1].IsPlayer).To(BeFalse())
+			Expect(dungeon.Actors[1].Hp).To(Equal(10))
+			Expect(dungeon.Actors[1].MaxHp).To(Equal(10))
+			Expect(dungeon.Actors[1].Mp).To(Equal(20))
+			Expect(dungeon.Actors[1].MaxMp).To(Equal(20))
 
 		})
 	})

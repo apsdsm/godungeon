@@ -5,10 +5,12 @@ import (
 	"os"
 
 	"github.com/apsdsm/canvas"
+	"github.com/apsdsm/canvas/painter"
 
 	"github.com/gdamore/tcell"
 
 	"github.com/apsdsm/godungeon/controllers"
+	"github.com/apsdsm/godungeon/debug"
 	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
@@ -23,6 +25,7 @@ var (
 	gameCanvas    canvas.Canvas
 	mapLayer      canvas.Layer
 	entityLayer   canvas.Layer
+	consoleLayer  canvas.Layer
 )
 
 func main() {
@@ -36,9 +39,12 @@ func main() {
 	mapLayer = canvas.NewLayer(width, height, 0, 0)
 	entityLayer = canvas.NewLayer(width, height, 0, 0)
 
+	consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
+
 	// add layers to canvas
 	gameCanvas.AddLayer(&mapLayer)
 	gameCanvas.AddLayer(&entityLayer)
+	gameCanvas.AddLayer(&consoleLayer)
 
 	// load map
 	dungeon := file.LoadMap("fixtures/maps/simple.json")
@@ -84,10 +90,15 @@ func main() {
 		// updaters <- should be triggering these from a loop
 		player.Update()
 
+		// render the cosole
+		renderConsole()
+
 		//@todo only render if dirty (move this to actor object)
 		entityLayer.Clear()
 		entityRenderer.Render()
 		gameCanvas.Draw()
+
+		// @todo WHY is health not importing properly?
 	}
 }
 
@@ -116,4 +127,13 @@ func createAndInitScreen() (screen tcell.Screen, width, height int) {
 func exitGame() {
 	screen.Fini()
 	os.Exit(1)
+}
+
+func renderConsole() {
+	consoleLayer.Clear()
+	log := debug.Tail(10)
+
+	for i := range log {
+		painter.DrawText(&consoleLayer, 0, i, log[i], tcell.StyleDefault.Foreground(tcell.Color104))
+	}
 }

@@ -16,6 +16,7 @@ package file
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 
 	"strconv"
@@ -37,7 +38,10 @@ func LoadMap(path string) *game.Dungeon {
 	json.Unmarshal(infile, &in)
 
 	m := game.NewDungeon(in.Width, in.Height)
-	m.Actors = make([]game.Actor, 1)
+
+	// this is a temporary memory allocation. This function should look through the
+	// map and make an acurate allocation based on how many enemies need to be spawned.
+	m.Actors = make([]game.Actor, 1, 50)
 
 	// setup player
 	m.Actors[0] = game.Actor{
@@ -45,6 +49,12 @@ func LoadMap(path string) *game.Dungeon {
 		Name:     "player",
 		Rune:     'x',
 		IsPlayer: true,
+		Hp:       20,
+		Attack: game.Attack{
+			MinDamage:   5,
+			MaxDamage:   10,
+			ChanceToHit: 100,
+		},
 	}
 
 	// setup tiles
@@ -53,7 +63,7 @@ func LoadMap(path string) *game.Dungeon {
 			// tile data
 			m.Tiles[x][y].Rune = in.Tiles[x][y].Rune
 			m.Tiles[x][y].Walkable = in.Tiles[x][y].Walkable
-			m.Tiles[x][y].Position = game.Position{x, y}
+			m.Tiles[x][y].Position = game.NewPosition(x, y)
 
 			// spawn actor in tile
 			if in.Tiles[x][y].Spawn != "" {
@@ -62,8 +72,11 @@ func LoadMap(path string) *game.Dungeon {
 				m.Actors = append(m.Actors, a)
 				m.Tiles[x][y].Occupant = &m.Actors[len(m.Actors)-1]
 			}
+
 		}
 	}
+
+	fmt.Print(m.Actors)
 
 	// jump map to calculate neighbor positions:
 	// 8 1 2
@@ -127,14 +140,21 @@ func resolvePrototypes(mob json_format.Mob, mobs *[]json_format.Mob) json_format
 				mob.Link = prot.Link
 			}
 
-			if mob.Hp == "" {
+			if mob.Hp == 0 {
 				mob.Hp = prot.Hp
 			}
 
-			if mob.Mp == "" {
+			if mob.MaxHp == 0 {
+				mob.MaxHp = prot.MaxHp
+			}
+
+			if mob.Mp == 0 {
 				mob.Mp = prot.Mp
 			}
 
+			if mob.MaxMp == 0 {
+				mob.MaxMp = prot.MaxMp
+			}
 			return mob
 		}
 	}
@@ -149,14 +169,21 @@ func makeActor(link string, mobs *[]json_format.Mob) game.Actor {
 	actor := game.Actor{}
 
 	for _, m := range *mobs {
+
+		//fmt.Print(m)
+
 		if m.Link == link {
 			m = resolvePrototypes(m, mobs)
 
 			actor.Name = m.Name
 			actor.Link = m.Link
 			actor.Rune = parseRune(m.Rune)
-			actor.HP = parseInt(m.Hp)
-			actor.MP = parseInt(m.Mp)
+			actor.Hp = m.Hp
+			actor.MaxHp = m.MaxHp
+			actor.Mp = m.Mp
+			actor.MaxMp = m.MaxMp
+
+			//fmt.Print(actor)
 
 			return actor
 		}

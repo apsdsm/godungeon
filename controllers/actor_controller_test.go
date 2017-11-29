@@ -115,10 +115,11 @@ var _ = Describe("ActorController", func() {
 	// @todo implement the attack
 	Describe("Attack", func() {
 		var (
-			actor   game.Actor
-			target  game.Actor
-			attack  game.Attack
-			defence game.Defence
+			actor      game.Actor
+			target     game.Actor
+			targetTile game.Tile
+			attack     game.Attack
+			defence    game.Defence
 		)
 
 		Context("on hit", func() {
@@ -128,7 +129,7 @@ var _ = Describe("ActorController", func() {
 
 				defence.DamageCutCeil = 10
 				target.Defence = defence
-				target.HP = 100
+				target.Hp = 100
 
 				damageCalculator.CalcDamageRet = fakes.CalcDamageRet{
 					Damage: game.Damage{
@@ -141,7 +142,7 @@ var _ = Describe("ActorController", func() {
 			It("applies damage to target", func() {
 				_ = controller.Attack(&actor, &target)
 				Expect(damageCalculator.Received("CalcDamage", fakes.CalcDamageSig{attack, defence})).To(BeTrue())
-				Expect(target.HP).To(Equal(80))
+				Expect(target.Hp).To(Equal(80))
 			})
 
 			It("return nil error", func() {
@@ -157,7 +158,7 @@ var _ = Describe("ActorController", func() {
 
 				defence.DamageCutCeil = 10
 				target.Defence = defence
-				target.HP = 100
+				target.Hp = 100
 
 				damageCalculator.CalcDamageRet = fakes.CalcDamageRet{
 					Damage: game.Damage{
@@ -170,7 +171,54 @@ var _ = Describe("ActorController", func() {
 			It("applies no damage to target", func() {
 				_ = controller.Attack(&actor, &target)
 				Expect(damageCalculator.Received("CalcDamage", fakes.CalcDamageSig{attack, defence})).To(BeTrue())
-				Expect(target.HP).To(Equal(100))
+				Expect(target.Hp).To(Equal(100))
+			})
+
+			It("return nil error", func() {
+				err := controller.Attack(&actor, &target)
+				Expect(err).To(BeNil())
+			})
+		})
+
+		Context("on kill", func() {
+			BeforeEach(func() {
+				attack.MaxDamage = 100
+				actor.Attack = attack
+
+				defence.DamageCutCeil = 0
+				target.Defence = defence
+				target.Hp = 1
+				target.Tile = &targetTile
+
+				targetTile.Occupant = &target
+
+				damageCalculator.CalcDamageRet = fakes.CalcDamageRet{
+					Damage: game.Damage{
+						Dp:   100,
+						Type: game.DamageHit,
+					},
+				}
+			})
+
+			It("uses the damage calcualtor", func() {
+				_ = controller.Attack(&actor, &target)
+				Expect(damageCalculator.Received("CalcDamage", fakes.CalcDamageSig{attack, defence})).To(BeTrue())
+			})
+
+			It("it sets the target hp to 0", func() {
+				_ = controller.Attack(&actor, &target)
+				Expect(target.Hp).To(Equal(0))
+			})
+
+			It("sets the target to dead", func() {
+				_ = controller.Attack(&actor, &target)
+				Expect(target.IsDead).To(BeTrue())
+			})
+
+			It("drops the target loot on the tile", func() {
+				_ = controller.Attack(&actor, &target)
+				// @todo need to do something to implement loot
+
 			})
 
 			It("return nil error", func() {

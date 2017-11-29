@@ -1,6 +1,9 @@
 package controllers
 
 import (
+	"fmt"
+
+	"github.com/apsdsm/godungeon/debug"
 	"github.com/apsdsm/godungeon/game"
 )
 
@@ -18,6 +21,7 @@ type ActorController struct {
 func NewActorController(damageCalculator damageCalculator) ActorController {
 	a := ActorController{}
 	a.damageCalculator = damageCalculator
+
 	return a
 }
 
@@ -31,12 +35,23 @@ func (c *ActorController) Move(actor *game.Actor, tile *game.Tile) error {
 	actor.Tile.Occupant = nil
 	tile.Occupant = actor
 	actor.Tile = tile
+
 	return nil
 }
 
 // Attack will apply damage from one actor's attack to another actor.
 func (c *ActorController) Attack(actor *game.Actor, target *game.Actor) error {
+
+	debug.Log(fmt.Sprint(target))
+
 	damage := c.damageCalculator.CalcDamage(actor.Attack, target.Defence)
-	target.HP -= damage.Dp
+	target.Hp -= damage.Dp
+
+	// check if target died this hit
+	if target.Hp <= 0 {
+		target.Hp = 0
+		target.IsDead = true
+	}
+
 	return nil
 }
