@@ -1,4 +1,4 @@
-package actor_renderer
+package actor_renderer_test
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -9,5 +9,5 @@ import (
 
 func TestEntityRenderer(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Entity ActorRenderer Suite")
+	RunSpecs(t, "ActorRenderer Suite")
 }

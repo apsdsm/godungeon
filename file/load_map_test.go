@@ -60,13 +60,28 @@ var _ = Describe("MapLoader", func() {
 		)
 
 		It("initializes the player", func() {
-			source = "../fixtures/maps/simple.json"
+			source = "../fixtures/maps/mobs.json"
 			dungeon = file.LoadMap(source)
 
-			Expect(len(dungeon.Actors)).To(Equal(1))
 			Expect(dungeon.Actors[0].Name).To(Equal("player"))
-			Expect(dungeon.Actors[0].Appearance).To(Equal('x'))
-			Expect(dungeon.Actors[0].Tile).To(Equal(dungeon.At(5, 2)))
+			Expect(dungeon.Actors[0].Rune).To(Equal('x'))
+			Expect(dungeon.Actors[0].Tile).To(Equal(dungeon.At(2, 1)))
+			Expect(dungeon.Actors[0].IsPlayer).To(BeTrue())
+		})
+
+		It("initializes mobs", func() {
+			source := "../fixtures/maps/mobs.json"
+			dungeon = file.LoadMap(source)
+
+			Expect(len(dungeon.Actors)).To(Equal(2))
+			Expect(dungeon.Actors[1].Rune).To(Equal('m'))
+			Expect(dungeon.Actors[1].Tile).To(Equal(dungeon.At(3, 2)))
+			Expect(dungeon.Actors[1].IsPlayer).To(BeFalse())
+			Expect(dungeon.Actors[1].Hp).To(Equal(10))
+			Expect(dungeon.Actors[1].MaxHp).To(Equal(10))
+			Expect(dungeon.Actors[1].Mp).To(Equal(20))
+			Expect(dungeon.Actors[1].MaxMp).To(Equal(20))
+
 		})
 	})
 

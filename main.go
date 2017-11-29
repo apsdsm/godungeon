@@ -5,10 +5,12 @@ import (
 	"os"
 
 	"github.com/apsdsm/canvas"
+	"github.com/apsdsm/canvas/painter"
 
 	"github.com/gdamore/tcell"
 
 	"github.com/apsdsm/godungeon/controllers"
+	"github.com/apsdsm/godungeon/debug"
 	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
@@ -17,22 +19,35 @@ import (
 	"github.com/apsdsm/godungeon/updaters"
 )
 
+var (
+	screen        tcell.Screen
+	width, height int
+	gameCanvas    canvas.Canvas
+	mapLayer      canvas.Layer
+	entityLayer   canvas.Layer
+	consoleLayer  canvas.Layer
+)
+
 func main() {
+	// @todo put a recover in here that will cleanly exit the game
+
 	// initialize the screen
-	screen, width, height := createAndInitScreen()
+	screen, width, height = createAndInitScreen()
 
 	// create game canvas and layers
-	gameCanvas := canvas.NewCanvas(screen)
-	mapLayer := canvas.NewLayer(width, height, 0, 0)
-	entityLayer := canvas.NewLayer(width, height, 0, 0)
+	gameCanvas = canvas.NewCanvas(screen)
+	mapLayer = canvas.NewLayer(width, height, 0, 0)
+	entityLayer = canvas.NewLayer(width, height, 0, 0)
+
+	consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
+
+	// add layers to canvas
 	gameCanvas.AddLayer(&mapLayer)
 	gameCanvas.AddLayer(&entityLayer)
+	gameCanvas.AddLayer(&consoleLayer)
 
 	// load map
 	dungeon := file.LoadMap("fixtures/maps/simple.json")
-
-	// setup an input handler
-	inputHandler := input.NewHandler(screen)
 
 	// set up map renderer
 	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
@@ -40,8 +55,17 @@ func main() {
 	// set up entity renderer
 	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
 
+	// setup an input handler
+	inputHandler := input.NewHandler(screen)
+
+	// setup a damage calculator
+	damageCalculator := game.NewDamageCalculator()
+
+	// create actor controller
+	actorController := controllers.NewActorController(&damageCalculator)
+
 	// set up a player
-	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler)
+	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
 	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
 	player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
 	player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)
@@ -52,9 +76,6 @@ func main() {
 	entityRenderer.Render()
 	gameCanvas.Draw()
 
-	// make controllers used directly in scene (this should be moved to an updated)
-	game := controllers.NewGameController(screen)
-
 	// main game loop <- move this logic into a specific scene object, rather than the main loop
 	for {
 
@@ -63,18 +84,21 @@ func main() {
 
 		// quit if user presses 'q' <- temporary code until a main menu system is in place
 		if inputHandler.HasKeyEvent(input.NewKey(input.KeyRune, 'q')) {
-			game.Quit()
+			exitGame()
 		}
 
 		// updaters <- should be triggering these from a loop
 		player.Update()
 
+		// render the cosole
+		renderConsole()
+
 		//@todo only render if dirty (move this to actor object)
-		//if dirty {
 		entityLayer.Clear()
 		entityRenderer.Render()
 		gameCanvas.Draw()
-		//}
+
+		// @todo WHY is health not importing properly?
 	}
 }
 
@@ -97,4 +121,19 @@ func createAndInitScreen() (screen tcell.Screen, width, height int) {
 	width, height = screen.Size()
 
 	return screen, width, height
+}
+
+// cleanly exit the game
+func exitGame() {
+	screen.Fini()
+	os.Exit(1)
+}
+
+func renderConsole() {
+	consoleLayer.Clear()
+	log := debug.Tail(10)
+
+	for i := range log {
+		painter.DrawText(&consoleLayer, 0, i, log[i], tcell.StyleDefault.Foreground(tcell.Color104))
+	}
 }

@@ -1,7 +1,6 @@
 package updaters
 
 import (
-	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
 )
@@ -22,18 +21,22 @@ type ActorControllerForPlayer interface {
 }
 
 // @todo should this be defined closer to the input handler? or just make a player package?
-// InputHandlerForPlayer defines the iterface for an input handler
+// InputHandlerForPlayer defines the interface for an input handler
 type InputHandlerForPlayer interface {
 	Events() input.Events
 }
 
 // NewController creates and returns a new controller
-func NewPlayer(actor *game.Actor, inputHandler InputHandlerForPlayer) Player {
+func NewPlayer(
+	actor *game.Actor,
+	inputHandler InputHandlerForPlayer,
+	controller ActorControllerForPlayer,
+) Player {
 	c := Player{}
 	c.actor = actor
 	c.inputHandler = inputHandler
 	c.boundMovements = make(map[input.Key]game.Direction)
-	c.ActorController = &controllers.ActorController{}
+	c.ActorController = controller
 
 	return c
 }

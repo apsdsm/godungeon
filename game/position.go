@@ -19,6 +19,14 @@ type Position struct {
 	X, Y int
 }
 
+// NewPosition creates and returns a new position object
+func NewPosition(x, y int) Position {
+	return Position{
+		X: x,
+		Y: y,
+	}
+}
+
 // OutOfBounds returns true if position is out of bounds
 func (p *Position) OutOfBounds(width, height int) bool {
 	return p.X < 0 || p.Y < 0 || p.X >= width || p.Y >= height

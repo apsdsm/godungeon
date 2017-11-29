@@ -6,3 +6,6 @@
 
 # vim
 *.swp
+
+# debug
+debug
