@@ -16,11 +16,11 @@ package file
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 
 	"strconv"
 
+	"github.com/apsdsm/godungeon/debug"
 	"github.com/apsdsm/godungeon/file/json_format"
 	"github.com/apsdsm/godungeon/game"
 )
@@ -43,7 +43,7 @@ func LoadMap(path string) *game.Dungeon {
 	// map and make an acurate allocation based on how many enemies need to be spawned.
 	m.Actors = make([]game.Actor, 1, 50)
 
-	// setup player
+	// setup player <- should pull this data from the json file
 	m.Actors[0] = game.Actor{
 		Tile:     m.At(in.StartPosition.X, in.StartPosition.Y),
 		Name:     "player",
@@ -72,32 +72,32 @@ func LoadMap(path string) *game.Dungeon {
 				m.Actors = append(m.Actors, a)
 				m.Tiles[x][y].Occupant = &m.Actors[len(m.Actors)-1]
 			}
-
 		}
 	}
-
-	fmt.Print(m.Actors)
 
 	// jump map to calculate neighbor positions:
 	// 8 1 2
 	// 7   3
 	// 6 5 4
 	jump := []game.Position{
-		{0, -1},  // N
-		{1, -1},  // NE
-		{1, 0},   // E
-		{1, 1},   // SE
-		{0, 1},   // S
-		{-1, 1},  // SW
-		{-1, 0},  // W
-		{-1, -1}, // NW
+		{X: 0, Y: -1},  // N
+		{X: 1, Y: -1},  // NE
+		{X: 1, Y: 0},   // E
+		{X: 1, Y: 1},   // SE
+		{X: 0, Y: 1},   // S
+		{X: -1, Y: 1},  // SW
+		{X: -1, Y: 0},  // W
+		{X: -1, Y: -1}, // NW
 	}
 
 	// assign neighbors
 	for x := range m.Tiles {
 		for y := range m.Tiles[x] {
 			for n := 0; n < 8; n++ {
-				nPos := game.Position{x + jump[n].X, y + jump[n].Y}
+				nPos := game.Position{
+					X: x + jump[n].X,
+					Y: y + jump[n].Y,
+				}
 
 				if !nPos.OutOfBounds(m.Width, m.Height) {
 					m.Tiles[x][y].Neighbors[n] = m.At(nPos.X, nPos.Y)
@@ -140,21 +140,14 @@ func resolvePrototypes(mob json_format.Mob, mobs *[]json_format.Mob) json_format
 				mob.Link = prot.Link
 			}
 
-			if mob.Hp == 0 {
+			if mob.Hp == "" {
 				mob.Hp = prot.Hp
 			}
 
-			if mob.MaxHp == 0 {
-				mob.MaxHp = prot.MaxHp
-			}
-
-			if mob.Mp == 0 {
+			if mob.Mp == "" {
 				mob.Mp = prot.Mp
 			}
 
-			if mob.MaxMp == 0 {
-				mob.MaxMp = prot.MaxMp
-			}
 			return mob
 		}
 	}
@@ -165,25 +158,18 @@ func resolvePrototypes(mob json_format.Mob, mobs *[]json_format.Mob) json_format
 // makeActor will search for a mob with the given link, and return an Actor initialized to
 // those values. If the link is not contained in the array of mobs, the method will panic.
 func makeActor(link string, mobs *[]json_format.Mob) game.Actor {
-
 	actor := game.Actor{}
 
 	for _, m := range *mobs {
-
-		//fmt.Print(m)
-
 		if m.Link == link {
 			m = resolvePrototypes(m, mobs)
-
 			actor.Name = m.Name
 			actor.Link = m.Link
 			actor.Rune = parseRune(m.Rune)
-			actor.Hp = m.Hp
-			actor.MaxHp = m.MaxHp
-			actor.Mp = m.Mp
-			actor.MaxMp = m.MaxMp
-
-			//fmt.Print(actor)
+			actor.Hp = parseInt(m.Hp)
+			actor.MaxHp = actor.Hp
+			actor.Mp = parseInt(m.Mp)
+			actor.MaxMp = actor.Mp
 
 			return actor
 		}
@@ -204,14 +190,15 @@ func parseRune(s string) rune {
 // parseInt converts a string to an int. If conversation fails the method will panic.
 func parseInt(s string) int {
 	if s == "" {
+		debug.Log("empty string == 0")
 		return 0
-	} else {
-		val, err := strconv.ParseInt(s, 10, 32)
-
-		if err != nil {
-			panic("could not parse int")
-		}
-
-		return int(val)
 	}
+
+	val, err := strconv.ParseInt(s, 10, 32)
+
+	if err != nil {
+		panic("could not parse int")
+	}
+
+	return int(val)
 }

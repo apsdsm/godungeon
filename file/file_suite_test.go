@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestIo(t *testing.T) {
+func TestFile(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Io Suite")
 }

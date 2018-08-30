@@ -1,209 +1,221 @@
 {
-  "Width": 8,
-  "Height": 4,
-  "Link": "small",
-  "Name": "Small Map",
-  "Desc": "small map for testing rendering",
-  "StartPosition": {
-    "X": 2,
-    "Y": 1
-  },
-  "Tiles": [
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": "goblin"
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ]
-  ],
-  "Doors": [],
-  "Keys": [],
-  "Mobs": [
-    {
-      "Name": "",
-      "Link": "goblin",
-      "Prot": "goblin_prot",
-      "Rune": "",
-      "Hp": "",
-      "Mp": ""
+    "Width": 8,
+    "Height": 4,
+    "Link": "small",
+    "Name": "Small Map",
+    "Desc": "small map for testing rendering",
+    "StartPosition": {
+        "X": 2,
+        "Y": 1
     },
-    {
-      "Name": "Goblin",
-      "Link": "goblin_prot",
-      "Prot": "",
-      "Rune": "m",
-      "Hp": "10",
-      "Mp": "20"
-    }
-  ]
+    "Tiles": [
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": "goblin"
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ]
+    ],
+    "Doors": [],
+    "Keys": [],
+    "Items": [
+        {
+            "Link": "copper",
+            "Type": "coin",
+            "Name": "Copper Coin",
+            "Desc": "The most common currency in this dungeon.",
+            "Size": "1",
+            "Uniq": "false"
+        }
+    ],
+    "Mobs": [
+        {
+            "Name": "",
+            "Link": "goblin",
+            "Prot": "goblin_prot",
+            "Rune": "",
+            "Loot": null,
+            "Hp": "",
+            "Mp": ""
+        },
+        {
+            "Name": "Goblin",
+            "Link": "goblin_prot",
+            "Prot": "",
+            "Rune": "m",
+            "Loot": null,
+            "Hp": "10",
+            "Mp": "20"
+        }
+    ]
 }

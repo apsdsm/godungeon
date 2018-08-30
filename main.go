@@ -29,16 +29,15 @@ var (
 )
 
 func main() {
-	// @todo put a recover in here that will cleanly exit the game
-
 	// initialize the screen
 	screen, width, height = createAndInitScreen()
 
-	// create game canvas and layers
+	// create game canvas
 	gameCanvas = canvas.NewCanvas(screen)
+
+	// create game layers
 	mapLayer = canvas.NewLayer(width, height, 0, 0)
 	entityLayer = canvas.NewLayer(width, height, 0, 0)
-
 	consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
 
 	// add layers to canvas
@@ -46,26 +45,23 @@ func main() {
 	gameCanvas.AddLayer(&entityLayer)
 	gameCanvas.AddLayer(&consoleLayer)
 
-	// load map
-	dungeon := file.LoadMap("fixtures/maps/simple.json")
-
-	// set up map renderer
-	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
-
-	// set up entity renderer
-	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
-
-	// setup an input handler
+	// set up input
 	inputHandler := input.NewHandler(screen)
 
-	// setup a damage calculator
-	damageCalculator := game.NewDamageCalculator()
+	// set up objects
+	dungeon := file.LoadMap("fixtures/maps/simple.json")
 
-	// create actor controller
-	actorController := controllers.NewActorController(&damageCalculator)
+	// set up renderers
+	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
+	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
 
-	// set up a player
+	// set up controllers
+	actorController := controllers.NewActorController(controllers.ActorControllerConfig{})
+
+	// set up updaters
 	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
+
+	// bind player movement <- should be in config object, loaded from config file
 	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
 	player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
 	player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)
@@ -76,10 +72,9 @@ func main() {
 	entityRenderer.Render()
 	gameCanvas.Draw()
 
-	// main game loop <- move this logic into a specific scene object, rather than the main loop
+	// main game loop
 	for {
-
-		// update input (I wish this were in an actual game loop object)
+		// update input
 		inputHandler.Update()
 
 		// quit if user presses 'q' <- temporary code until a main menu system is in place
@@ -87,18 +82,18 @@ func main() {
 			exitGame()
 		}
 
-		// updaters <- should be triggering these from a loop
+		// update updaters <- should be triggering these from a loop
 		player.Update()
 
-		// render the cosole
+		// render the cosole <- should only do this if dirty
 		renderConsole()
 
-		//@todo only render if dirty (move this to actor object)
+		// lear layer <- should only do this if dirty
 		entityLayer.Clear()
+
+		// update renderers <- should only do this if dirty
 		entityRenderer.Render()
 		gameCanvas.Draw()
-
-		// @todo WHY is health not importing properly?
 	}
 }
 

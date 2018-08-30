@@ -1,1431 +1,1414 @@
 {
-  "Width": 29,
-  "Height": 9,
-  "Link": "simple",
-  "Name": "Simple Map",
-  "Desc": "simple map with all features.",
-  "StartPosition": {
-    "X": 5,
-    "Y": 2
-  },
-  "Tiles": [
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
+    "Width": 29,
+    "Height": 9,
+    "Link": "simple",
+    "Name": "Simple Map",
+    "Desc": "simple map with all features.",
+    "StartPosition": {
+        "X": 5,
+        "Y": 2
+    },
+    "Tiles": [
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": "goblin"
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": "goblin"
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": "goblin"
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 35,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ],
+        [
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 32,
+                "Walkable": true,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            },
+            {
+                "Rune": 0,
+                "Walkable": false,
+                "Spawn": ""
+            }
+        ]
     ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
+    "Doors": [
+        {
+            "Link": "door1",
+            "Locked": false,
+            "Key": "",
+            "OnTry": ""
+        },
+        {
+            "Link": "door2",
+            "Locked": false,
+            "Key": "door2key",
+            "OnTry": ""
+        }
     ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
+    "Keys": [],
+    "Items": [
+        {
+            "Link": "copper",
+            "Type": "coin",
+            "Name": "Copper Coin",
+            "Desc": "The most common currency in this dungeon.",
+            "Size": "1",
+            "Uniq": "false"
+        }
     ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": "goblin1"
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": "goblin2"
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": "goblin3"
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 35,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
-    ],
-    [
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 32,
-        "Walkable": true,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      },
-      {
-        "Rune": 0,
-        "Walkable": false,
-        "Spawn": ""
-      }
+    "Mobs": [
+        {
+            "Name": "",
+            "Link": "goblin",
+            "Prot": "",
+            "Rune": "g",
+            "Loot": [ 
+                "copper:10~20" 
+            ],
+            "Hp": "5",
+            "Mp": "0"
+        }
     ]
-  ],
-  "Doors": [
-    {
-      "Link": "door1",
-      "Locked": false,
-      "Key": "",
-      "OnTry": ""
-    },
-    {
-      "Link": "door2",
-      "Locked": false,
-      "Key": "door2key",
-      "OnTry": ""
-    }
-  ],
-  "Keys": [
-    {
-      "Name": "Unmarked Key",
-      "Link": "door2key",
-      "Desc": "A small unmarked key."
-    }
-  ],
-  "Mobs": [
-    {
-      "Name": "Goblin 1",
-      "Link": "goblin1",
-      "Prot": "",
-      "Rune": "1",
-      "Hp": 10,
-      "MaxHP": 10,
-      "Mp": 0,
-      "MaxMP": 0
-    },
-
-    {
-      "Name": "Goblin 2",
-      "Link": "goblin2",
-      "Prot": "",
-      "Rune": "2",
-      "Hp": 10,
-      "MaxHP": 10,
-      "Mp": 0,
-      "MaxMP": 0
-    },
-    
-    {
-      "Name": "Goblin 3",
-      "Link": "goblin3",
-      "Prot": "",
-      "Rune": "3",
-      "Hp": 10,
-      "MaxHP": 10,
-      "Mp": 0,
-      "MaxMP": 0
-    }
-  ]
 }
