@@ -13,6 +13,7 @@ type ActorController struct {
 	random *rand.Rand
 }
 
+// ActorControllerConfig stores config data for controller
 type ActorControllerConfig struct {
 	Seed int64
 }
@@ -20,15 +21,11 @@ type ActorControllerConfig struct {
 // NewActorController return a new initialized actor controller
 func NewActorController(config ActorControllerConfig) ActorController {
 	a := ActorController{}
+
 	a.seed = config.Seed
 	a.random = rand.New(rand.NewSource(a.seed))
 
 	return a
-}
-
-func (c *ActorController) SetSeed(s int64) {
-	c.seed = s
-	c.random = rand.New(rand.NewSource(s))
 }
 
 // Move will change the tile position for an actor. If the tile cannot be moved to

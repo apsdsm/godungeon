@@ -16,11 +16,11 @@ package game
 
 // A Dungeon contains a grid of tiles
 type Dungeon struct {
-	Width  int
-	Height int
-	Link   string
-	Tiles  [][]Tile
-	Actors []Actor
+	Width           int
+	Height          int
+	Link            string
+	Tiles           [][]Tile
+	Actors          []Actor
 	ActorPrototypes []Actor
 }
 

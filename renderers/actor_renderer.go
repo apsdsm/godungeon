@@ -12,7 +12,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-package actor_renderer
+package renderers
 
 import (
 	"github.com/apsdsm/canvas"
@@ -26,8 +26,8 @@ type ActorRenderer struct {
 	actors *[]game.Actor
 }
 
-// NewEntityRenderer creates and returns a pointer to a a new ActorRenderer object
-func New(entities *[]game.Actor, layer *canvas.Layer) *ActorRenderer {
+// NewActorRenderer creates and returns a pointer to a a new ActorRenderer object
+func NewActorRenderer(entities *[]game.Actor, layer *canvas.Layer) *ActorRenderer {
 	r := ActorRenderer{}
 	r.layer = layer
 	r.actors = entities
@@ -36,30 +36,43 @@ func New(entities *[]game.Actor, layer *canvas.Layer) *ActorRenderer {
 
 // Render will send information about each entity to the assigned layer
 func (r *ActorRenderer) Render() {
-	style := tcell.StyleDefault
-	for _, t := range *r.actors {
+	for _, a := range *r.actors {
+		at := a.Tile.Position
 
-		// choose the color for the actor based on its state
-		// @todo this should live in some kind of method
-		if t.IsPlayer {
-			style = style.Foreground(game.White)
-		} else {
-
-			//debug.Log(fmt.Sprintf("%+v", t))
-
-			if t.HpPercentRemaining() <= 0.10 {
-				style = style.Foreground(game.Red)
-			} else {
-				// if health is less than 10 percent, draw as red
-				style = style.Foreground(game.Green)
-			}
-		}
-
-		at := t.Tile.Position
 		r.layer.At(at.X, at.Y).Set(
-			t.Rune,
-			style,
+			renderRune(a),
+			renderStyle(a),
 		)
-
 	}
+}
+
+// The correct rune to render for this actor. If the actor is alive it returns
+// the actor's specified rune. Otherwise it returns a cross.
+func renderRune(a game.Actor) rune {
+	if a.IsDead {
+		return '✝'
+	}
+
+	return a.Rune
+}
+
+// The style in which this actor should be rendered. Player is white. Mobs are
+// green until they are dead, when they are red.
+func renderStyle(a game.Actor) tcell.Style {
+	style := tcell.StyleDefault
+
+	if a.IsPlayer {
+		return style.Foreground(game.White)
+	}
+
+	if hpPercentRemaining(a) <= 0.10 {
+		return style.Foreground(game.Red)
+	}
+
+	return style.Foreground(game.Green)
+}
+
+// hp remaining for this actor.
+func hpPercentRemaining(a game.Actor) float64 {
+	return float64(a.Hp) / float64(a.MaxHp)
 }

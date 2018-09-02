@@ -14,7 +14,7 @@
 
 package game
 
-// A tile is a single tile in a map
+// A Tile is a single tile in a map
 type Tile struct {
 	Rune      rune
 	Walkable  bool
@@ -22,8 +22,10 @@ type Tile struct {
 	Occupant  *Actor
 	Position  Position
 	Neighbors [8]*Tile
+	Seen      bool
 }
 
+// Neighbor returns the neight of this tile in the given direction
 func (t *Tile) Neighbor(direction Direction) *Tile {
 	return t.Neighbors[direction]
 }

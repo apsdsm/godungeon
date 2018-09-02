@@ -50,6 +50,7 @@ func LoadMap(path string) *game.Dungeon {
 		Rune:     'x',
 		IsPlayer: true,
 		Hp:       20,
+		Sight:    30,
 		Attack: game.Attack{
 			MinDamage:   5,
 			MaxDamage:   10,
@@ -148,6 +149,10 @@ func resolvePrototypes(mob json_format.Mob, mobs *[]json_format.Mob) json_format
 				mob.Mp = prot.Mp
 			}
 
+			if mob.Sight == "" {
+				mob.Sight = prot.Sight
+			}
+
 			return mob
 		}
 	}
@@ -170,6 +175,7 @@ func makeActor(link string, mobs *[]json_format.Mob) game.Actor {
 			actor.MaxHp = actor.Hp
 			actor.Mp = parseInt(m.Mp)
 			actor.MaxMp = actor.Mp
+			actor.Sight = parseInt(m.Sight)
 
 			return actor
 		}

@@ -14,8 +14,7 @@ import (
 	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
-	"github.com/apsdsm/godungeon/renderers/actor_renderer"
-	"github.com/apsdsm/godungeon/renderers/dungeon_renderer"
+	"github.com/apsdsm/godungeon/renderers"
 	"github.com/apsdsm/godungeon/updaters"
 )
 
@@ -52,14 +51,27 @@ func main() {
 	dungeon := file.LoadMap("fixtures/maps/simple.json")
 
 	// set up renderers
-	mapRenderer := dungeon_renderer.New(dungeon, &mapLayer)
-	entityRenderer := actor_renderer.New(&dungeon.Actors, &entityLayer)
+	mapRenderer := renderers.NewDungeonRenderer(renderers.DungeonRendererConfig{
+		Dungeon: dungeon,
+		Layer:   &mapLayer,
+		Player:  &dungeon.Actors[0],
+	})
+
+	entityRenderer := renderers.NewActorRenderer(
+		&dungeon.Actors,
+		&entityLayer,
+	)
 
 	// set up controllers
 	actorController := controllers.NewActorController(controllers.ActorControllerConfig{})
 
 	// set up updaters
 	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
+
+	mobs := updaters.NewMobAi(updaters.MobAiConfig{
+		Player: &dungeon.Actors[0],
+		Mobs:   &dungeon.Actors,
+	})
 
 	// bind player movement <- should be in config object, loaded from config file
 	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
@@ -84,15 +96,17 @@ func main() {
 
 		// update updaters <- should be triggering these from a loop
 		player.Update()
-
-		// render the cosole <- should only do this if dirty
-		renderConsole()
+		mobs.Update()
 
 		// lear layer <- should only do this if dirty
 		entityLayer.Clear()
 
 		// update renderers <- should only do this if dirty
 		entityRenderer.Render()
+		mapRenderer.Render()
+
+		// render the cosole <- should only do this if dirty
+		renderConsole()
 		gameCanvas.Draw()
 	}
 }
