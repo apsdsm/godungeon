@@ -80,6 +80,9 @@ func TVis(from, to *Tile) bool {
 		//   90   NAN   270
 		//  135   180   225
 
+		// put checks in for non-specific angles like between 45 and 0
+		// so that it goes E unless that's blocked in which case it goes NE
+
 		if deg < 45 || deg > 315 {
 			check = check.Neighbors[N]
 			//debug.Log("N")
