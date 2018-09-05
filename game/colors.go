@@ -12,4 +12,5 @@ const (
 	DarkGrey = tcell.ColorDarkGrey
 	Green    = tcell.ColorGreen
 	Red      = tcell.ColorRed
+	Orange   = tcell.ColorOrange
 )

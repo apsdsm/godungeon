@@ -58,19 +58,26 @@ func (d *DungeonRenderer) Render() {
 			style := tcell.StyleDefault
 
 			if dist <= d.player.Sight && game.TVis(d.player.Tile, &d.dungeon.Tiles[x][y]) {
-
-				// check to see if it's visible
-
 				d.dungeon.Tiles[x][y].Seen = true
 				d.layer.Grid[x][y].Rune = d.dungeon.Tiles[x][y].Rune
-				d.layer.Grid[x][y].Style = style.Foreground(game.White)
-			} else {
-				// if d.dungeon.Tiles[x][y].Seen {
+				d.layer.Grid[x][y].Style = style.Foreground(game.White).Background(game.Orange)
+
+				if d.dungeon.Tiles[x][y].Walkable {
+					d.layer.Grid[x][y].Rune = ' '
+				}
+
+			} else if d.dungeon.Tiles[x][y].Seen {
 				d.layer.Grid[x][y].Rune = d.dungeon.Tiles[x][y].Rune
-				d.layer.Grid[x][y].Style = style.Foreground(game.Grey)
-				// } else {
-				// 	d.layer.Grid[x][y].Rune = ' '
-				// }
+				d.layer.Grid[x][y].Style = style.Foreground(game.Grey).Background(game.DarkGrey)
+
+				if d.dungeon.Tiles[x][y].Walkable {
+					d.layer.Grid[x][y].Rune = '·'
+				}
+				
+			} else {				
+				d.layer.Grid[x][y].Rune = d.dungeon.Tiles[x][y].Rune
+				d.layer.Grid[x][y].Style = style.Foreground(game.Grey).Background(game.DarkGrey)
+				d.layer.Grid[x][y].Rune = '·'
 			}
 		}
 	}
