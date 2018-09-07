@@ -37,12 +37,14 @@ func NewActorRenderer(entities *[]game.Actor, layer *canvas.Layer) *ActorRendere
 // Render will send information about each entity to the assigned layer
 func (r *ActorRenderer) Render() {
 	for _, a := range *r.actors {
+		if !a.Tile.Visible {
+			continue
+		}
+
 		at := a.Tile.Position
 
-		r.layer.At(at.X, at.Y).Set(
-			renderRune(a),
-			renderStyle(a),
-		)
+		r.layer.Grid[at.X][at.Y].Style = renderStyle(a, r.layer.Grid[at.X][at.Y].Style)
+		r.layer.Grid[at.X][at.Y].Rune = renderRune(a)
 	}
 }
 
@@ -58,9 +60,7 @@ func renderRune(a game.Actor) rune {
 
 // The style in which this actor should be rendered. Player is white. Mobs are
 // green until they are dead, when they are red.
-func renderStyle(a game.Actor) tcell.Style {
-	style := tcell.StyleDefault
-
+func renderStyle(a game.Actor, style tcell.Style) tcell.Style {
 	if a.IsPlayer {
 		return style.Foreground(game.White)
 	}

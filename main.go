@@ -59,7 +59,7 @@ func main() {
 
 	entityRenderer := renderers.NewActorRenderer(
 		&dungeon.Actors,
-		&entityLayer,
+		&mapLayer,
 	)
 
 	// set up controllers
@@ -102,8 +102,8 @@ func main() {
 		entityLayer.Clear()
 
 		// update renderers <- should only do this if dirty
-		entityRenderer.Render()
 		mapRenderer.Render()
+		entityRenderer.Render()
 
 		// render the cosole <- should only do this if dirty
 		renderConsole()

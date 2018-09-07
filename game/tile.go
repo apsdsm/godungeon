@@ -23,6 +23,7 @@ type Tile struct {
 	Position  Position
 	Neighbors [8]*Tile
 	Seen      bool
+	Visible   bool
 }
 
 // Neighbor returns the neight of this tile in the given direction
