@@ -50,7 +50,7 @@ func LoadMap(path string) *game.Dungeon {
 		Rune:     'x',
 		IsPlayer: true,
 		Hp:       20,
-		Sight:    6,
+		Sight:    20,
 		Attack: game.Attack{
 			MinDamage:   5,
 			MaxDamage:   10,

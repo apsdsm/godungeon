@@ -16,14 +16,15 @@ package game
 
 // A Tile is a single tile in a map
 type Tile struct {
-	Rune      rune
-	Walkable  bool
-	Spawn     string
-	Occupant  *Actor
-	Position  Position
-	Neighbors [8]*Tile
-	Seen      bool
-	Visible   bool
+	Rune       rune
+	Walkable   bool
+	Spawn      string
+	Occupant   *Actor
+	Position   Position
+	Neighbors  [8]*Tile
+	Seen       bool
+	Visible    bool
+	Brightness float32
 }
 
 // Neighbor returns the neight of this tile in the given direction

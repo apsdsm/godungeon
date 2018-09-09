@@ -1,11 +1,7 @@
 package game
 
 import (
-	"fmt"
 	"math"
-	"strconv"
-
-	"github.com/apsdsm/godungeon/debug"
 )
 
 // TDist returns the number of steps between two tiles (assuming a diagonal step is 2)
@@ -57,133 +53,196 @@ type pftile struct {
 	open   bool
 }
 
-func TVis(from, to *Tile) bool {
-
+func TDeg(from, to *Tile) float64 {
 	b := Vec2{float64(to.Position.X), float64(to.Position.Y)}
+	a := Vec2{float64(from.Position.X), float64(from.Position.Y)}
+	ba := Vec2Sub(b, a)
+	norm := Vec2Nor(ba)
+	deg := math.Atan2(norm.x, norm.y)*180/math.Pi + 180.0
+
+	return deg
+}
+
+func TVis(from, to *Tile) bool {
 	check := from
 
-	count := 0
-
 	for check != to {
+		deg := TDeg(check, to)
 
-		debug.Log(strconv.Itoa(count))
-		count++
+		// 1. find the angle that describes a line from the center of FROM to the closest corner
+		//    of TO
+		//
+		// 2. given that triangle, when ADJ is length 0, the height of the OPP side will be 0.
+		// 3. add 1.0 to the length of the ADJ and see the new hight of OPP side. this lets us
+		// know which tile to check for visibility.
 
-		a := Vec2{float64(check.Position.X), float64(check.Position.Y)}
-		ba := Vec2Sub(b, a) // target b to a
-		norm := Vec2Nor(ba)
-		deg := math.Atan2(norm.x, norm.y)*180/math.Pi + 180.0
-
-		debug.Log(fmt.Sprintf("%f", deg))
+		//
+		//           | <- opp
+		//  +--------+
+		//    adj          <- in this case we get tan(theta)=opp/adj
+		//                    or opp x tan(theta) = adj
+		//                    we know theta, so we can get the heights at multiple points
+		//                    on the triangle. this allows us to chek which grid square to check
+		//                    that is, if the height is 1.3, and the y cord of the starting point
+		//                    is 10, then we need to chec if the tile in position 12 obstructs the
+		//                    view.
 
 		//   45   360   315
 		//   90   NAN   270
 		//  135   180   225
 
 		// if the vector points to a cardinal direction, use that direction as the next check tile,
-		// otherwise be a little more permissive in choosing the next check tile. 
-		
+		// otherwise be a little more permissive in choosing the next check tile.
+
+		// this monstrosity below is one of those times I wish go had a more succint
+		// syntax for if/else...
+
+		// vague corners:
+		// for angles that are between cardinal points (e.g., 20degs), we have slightly more involved logic to
+		// to check where the next path in the tile is. We try to be permissive in letting the line of sight
+		// continue so long as it is not directly blocked in by a corner.
+		//
+		//   ····t··
+		//   ··p#··· <- in this case t is not quite 45 degress. If we try move E the line of sight stops.
+		//   #######    however since the NE tile is walkable, we use that tile instead.
+		//
+		//   ###·t··
+		//   ··p#··· <- in this case E is blocked. NE is free, but N is blocked, so t is not visible.
+		//   #######
+		//
+		// cardinal corners:
+		// when we encounter a hard diagonal (e.g., NW), we check the surrounding tiles before deciding if we
+		// can see in that direction or not. If both N and W are not walkable, then we only pass the NW tile
+		// back if it is also not walkable. This allows us to fill in corners of buildings on a map without
+		// also allowing a player to peek into another room through a corner.
+		//
+		//  t###
+		//  #···
+		//  #·p·   <- player cannot see t
+		//
+		//  ####
+		//  #···
+		//  #·p·   <- player can see the NW corner
+
 		if 0 < deg && deg < 45 {
 			if check.Neighbors[N].Walkable {
 				check = check.Neighbors[N]
-			} else {
+			} else if check.Neighbors[W].Walkable {
 				check = check.Neighbors[NW]
+			} else {
+				return false
 			}
+
 		} else if deg == 45 {
+			if !check.Neighbors[N].Walkable && !check.Neighbors[W].Walkable {
+				if check.Neighbors[NW].Walkable {
+					return false
+				}
+			}
 			check = check.Neighbors[NW]
-		} else if 45 < deg && deg < 90 {
+
+		} else if deg < 90 {
 			if check.Neighbors[W].Walkable {
 				check = check.Neighbors[W]
-			} else {
+			} else if check.Neighbors[N].Walkable {
 				check = check.Neighbors[NW]
+			} else {
+				return false
 			}
+
 		} else if deg == 90 {
 			check = check.Neighbors[W]
-		} else if 90 < deg && deg < 135 {
+
+		} else if deg < 135 {
 			if check.Neighbors[W].Walkable {
 				check = check.Neighbors[W]
-			} else {
+			} else if check.Neighbors[S].Walkable {
 				check = check.Neighbors[SW]
+			} else {
+				return false
 			}
+
 		} else if deg == 135 {
+			if !check.Neighbors[S].Walkable && !check.Neighbors[W].Walkable {
+				if check.Neighbors[SW].Walkable {
+					return false
+				}
+			}
 			check = check.Neighbors[SW]
-		} else if 135 < deg && deg < 180 {
+
+		} else if deg < 180 {
 			if check.Neighbors[S].Walkable {
 				check = check.Neighbors[S]
-			} else {
+			} else if check.Neighbors[W].Walkable {
 				check = check.Neighbors[SW]
+			} else {
+				return false
 			}
+
 		} else if deg == 180 {
 			check = check.Neighbors[S]
-		} else if 180 < deg && deg < 225 {
+
+		} else if deg < 225 {
 			if check.Neighbors[S].Walkable {
 				check = check.Neighbors[S]
-			} else {
+			} else if check.Neighbors[E].Walkable {
 				check = check.Neighbors[SE]
+			} else {
+				return false
 			}
+
 		} else if deg == 225 {
+			if !check.Neighbors[S].Walkable && !check.Neighbors[E].Walkable {
+				if check.Neighbors[SE].Walkable {
+					return false
+				}
+			}
 			check = check.Neighbors[SE]
-		} else if 225 < deg && deg < 270 {
+
+		} else if deg < 270 {
 			if check.Neighbors[E].Walkable {
 				check = check.Neighbors[E]
-			} else {
+			} else if check.Neighbors[S].Walkable {
 				check = check.Neighbors[SE]
+			} else {
+				return false
 			}
+
 		} else if deg == 270 {
 			check = check.Neighbors[E]
-		} else if 270 < deg && deg < 315  {
+
+		} else if deg < 315 {
 			if check.Neighbors[E].Walkable {
 				check = check.Neighbors[E]
-			} else {
+			} else if check.Neighbors[N].Walkable {
 				check = check.Neighbors[NE]
+			} else {
+				return false
 			}
+
 		} else if deg == 315 {
-			check = check.Neighbors[NE]		
-		} else if 315 < deg && deg < 360 {
+			if !check.Neighbors[N].Walkable && !check.Neighbors[E].Walkable {
+				if check.Neighbors[NE].Walkable {
+					return false
+				}
+			}
+
+			check = check.Neighbors[NE]
+
+		} else if deg < 360 {
 			if check.Neighbors[N].Walkable {
 				check = check.Neighbors[N]
-			} else {
+			} else if check.Neighbors[E].Walkable {
 				check = check.Neighbors[NE]
+			} else {
+				return false
 			}
+
 		} else {
 			check = check.Neighbors[N]
 		}
 
-
-		// if deg < 45 || deg > 315 {
-		// 	check = check.Neighbors[N]
-		// 	//debug.Log("N")
-		// } else if deg == 315 {
-		// 	check = check.Neighbors[NE]
-		// 	//debug.Log("NE")
-		// } else if deg < 315 && deg > 225 {
-		// 	check = check.Neighbors[E]
-		// 	//debug.Log("E")
-		// } else if deg == 225 {
-		// 	check = check.Neighbors[SE]
-		// 	//debug.Log("SE")
-		// } else if deg < 225 && deg > 135 {
-		// 	check = check.Neighbors[S]
-		// 	//debug.Log("S")
-		// } else if deg == 135 {
-		// 	check = check.Neighbors[SW]
-		// 	//debug.Log("SW")
-		// } else if deg < 135 && deg > 45 {
-		// 	check = check.Neighbors[W]
-		// 	//debug.Log("W")
-		// } else {
-		// 	check = check.Neighbors[NW]
-		// 	//debug.Log("NW")
-		// }
-
-		if check == nil {
-			//debug.Log("nil - not visible")
-			return false
-
-		}
-
-		if check != to && !check.Walkable {
-			//debug.Log("obstructed - not visible")
+		if check == nil || check != to && !check.Walkable {
 			return false
 		}
 	}
