@@ -1,4 +1,4 @@
-package controllers_test
+package math2d_test
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestControllers(t *testing.T) {
+func TestMath2d(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Controllers Suite")
+	RunSpecs(t, "Math2d Suite")
 }

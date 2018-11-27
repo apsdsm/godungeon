@@ -37,12 +37,7 @@ func NewActorRenderer(entities *[]game.Actor, layer *canvas.Layer) *ActorRendere
 // Render will send information about each entity to the assigned layer
 func (r *ActorRenderer) Render() {
 	for _, a := range *r.actors {
-		if !a.Tile.Visible {
-			continue
-		}
-
 		at := a.Tile.Position
-
 		r.layer.Grid[at.X][at.Y].Style = renderStyle(a, r.layer.Grid[at.X][at.Y].Style)
 		r.layer.Grid[at.X][at.Y].Rune = renderRune(a)
 	}
