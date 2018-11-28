@@ -78,9 +78,9 @@ var _ = Describe("Occluder", func() {
 	})
 
 	//     0   1   2
-	// 0  [ ] [x] [ ]    ->   [v] [v] [ ]
-	// 1  [p] [x] [ ]    ->   [v] [v] [ ]
-	// 2  [ ] [ ] [ ]    ->   [v] [v] [v]
+	// 0  [x] [x] [x]    ->   [v] [v] [v]
+	// 1  [ ] [ ] [x]    ->   [v] [v] [v]
+	// 2  [p] [ ] [x]    ->   [v] [v] [v]
 	It("can see into corners", func() {
 		grid := makeGrid([]bool{
 			X, X, X,
