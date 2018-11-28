@@ -1,6 +1,8 @@
 package math2d_test
 
 import (
+	"fmt"
+
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/math2d"
 
@@ -71,7 +73,27 @@ var _ = Describe("Occluder", func() {
 		checkVis(grid, []bool{
 			V, V, X,
 			V, V, X,
-			V, V, X,
+			V, V, V,
+		}, 3, 3)
+	})
+
+	//     0   1   2
+	// 0  [ ] [x] [ ]    ->   [v] [v] [ ]
+	// 1  [p] [x] [ ]    ->   [v] [v] [ ]
+	// 2  [ ] [ ] [ ]    ->   [v] [v] [v]
+	It("can see into corners", func() {
+		grid := makeGrid([]bool{
+			X, X, X,
+			O, O, X,
+			O, O, X,
+		}, 3, 3)
+
+		math2d.FindVisibleTiles(&grid[0][2], grid)
+
+		checkVis(grid, []bool{
+			V, V, V,
+			V, V, V,
+			V, V, V,
 		}, 3, 3)
 	})
 })
@@ -79,6 +101,11 @@ var _ = Describe("Occluder", func() {
 func checkVis(in [][]game.Tile, visMap []bool, xdim, ydim int) {
 	for y := 0; y < ydim; y++ {
 		for x := 0; x < xdim; x++ {
+
+			if in[x][y].Visible != visMap[y*xdim+x] {
+				fmt.Printf("err at - %d, %d\n", x, y)
+			}
+
 			Expect(in[x][y].Visible).To(Equal(visMap[y*xdim+x]))
 		}
 	}

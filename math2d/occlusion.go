@@ -15,7 +15,7 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 	// set up some constant values that are used to quickly calc the verts
 	// surrouding each tile.
 	//
-	// ~~set the points slightly inset forom the tile.~~
+	// set 8 points - 4 slightly inside the tile, and 4 slightly outside.
 	//
 	// now, this is a hack, but get this - if you set the four
 	// points to check to be exactly the four corners of the tile, then
@@ -23,17 +23,24 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 	// checking and failing the sight line based on the visibility of
 	// adjacent tiles that do not nominally come into the picture. By
 	// setting the sightlines to be slightly inside the tile, you
-	// never hit those troublesome tiles...
+	// never hit those troublesome tiles, and by setting an additional
+	// four points just *outside* the tile you additionally cover the
+	// literal corner case where one tile is obscured by two corners.
 	//
-	// but, it's still a hack, and won't work for corners.
-	// what you really need to do is check how far along the line the intersection
-	// is. if line A intersects line B at its very farthest point, then
-	// we know that we can probably not worry about that tile.
+	// but, it's still a hack, and it means you're checking each points on
+	// each tile, but these checks are dirt cheap, so we can get away with
+	// being a little permissive here. If it really gets performance intensive
+	// then later on it could be possible to create baked in visibility
+	// maps for each level.
 	points := []game.Vec2{
 		{-0.49, -0.49},
 		{0.49, -0.49},
 		{0.49, 0.49},
 		{-0.49, 0.49},
+		{-0.51, -0.51},
+		{0.51, -0.51},
+		{0.51, 0.51},
+		{-0.51, 0.51},
 	}
 
 	// generate the vector for the start tile
@@ -52,6 +59,10 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 			{float64(p.Position.X) + points[1].X, float64(p.Position.Y) + points[1].Y},
 			{float64(p.Position.X) + points[2].X, float64(p.Position.Y) + points[2].Y},
 			{float64(p.Position.X) + points[3].X, float64(p.Position.Y) + points[3].Y},
+			{float64(p.Position.X) + points[4].X, float64(p.Position.Y) + points[4].Y},
+			{float64(p.Position.X) + points[5].X, float64(p.Position.Y) + points[5].Y},
+			{float64(p.Position.X) + points[6].X, float64(p.Position.Y) + points[6].Y},
+			{float64(p.Position.X) + points[7].X, float64(p.Position.Y) + points[7].Y},
 		}
 
 		// the lines that lead from the start tile to the four corners of this tile
@@ -60,6 +71,10 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 			{startVec, tileVecs[1]},
 			{startVec, tileVecs[2]},
 			{startVec, tileVecs[3]},
+			{startVec, tileVecs[4]},
+			{startVec, tileVecs[5]},
+			{startVec, tileVecs[6]},
+			{startVec, tileVecs[7]},
 		}
 
 		var visible bool
