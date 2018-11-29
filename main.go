@@ -66,7 +66,11 @@ func main() {
 	actorController := controllers.NewActorController(controllers.ActorControllerConfig{})
 
 	// set up updaters
-	player := updaters.NewPlayer(&dungeon.Actors[0], &inputHandler, &actorController)
+	player := updaters.NewPlayer(updaters.PlayerConfig{
+		Actor:           &dungeon.Actors[0],
+		Input:           &inputHandler,
+		ActorController: &actorController,
+	})
 
 	mobs := updaters.NewMobAi(updaters.MobAiConfig{
 		Player: &dungeon.Actors[0],
@@ -138,6 +142,7 @@ func exitGame() {
 	os.Exit(1)
 }
 
+// render the log console
 func renderConsole() {
 	consoleLayer.Clear()
 	log := debug.Tail(10)
