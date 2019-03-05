@@ -4,6 +4,21 @@ import (
 	"math"
 )
 
+// when vecs added to tile pos will get the 4 tile points
+var tilePoints = []Vec2{
+	{-0.5, -0.5},
+	{0.5, -0.5},
+	{0.5, 0.5},
+	{-0.5, 0.5},
+}
+
+var tileLines = [][]int{
+	{0, 1},
+	{1, 2},
+	{2, 3},
+	{3, 0},
+}
+
 // TDist returns the number of steps between two tiles (assuming a diagonal step is 2)
 func TDist(from, to *Tile) int {
 	xdis := math.Abs(float64(from.Position.X) - float64(to.Position.X))
@@ -72,7 +87,7 @@ func TVis(from, to *Tile) bool {
 	return true
 }
 
-func LinesIntersect(l1, l2 Line) bool {
+func LinesIntersectTol(l1, l2 Line, tolerance float64) bool {
 	x1 := l1.A.X
 	y1 := l1.A.Y
 	x2 := l1.B.X
@@ -86,47 +101,58 @@ func LinesIntersect(l1, l2 Line) bool {
 	uA := ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / denom
 	uB := ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / denom
 
-	if uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1 {
+	t0 := 0 + tolerance
+	t1 := 1 - tolerance
+
+	if uA >= t0 && uA <= t1 && uB >= t0 && uB <= t1 {
 		return true
 	}
 	return false
 }
 
+func LinesIntersect(l1, l2 Line) bool {
+	return LinesIntersectTol(l1, l2, 0)
+}
+
+// GetTileVecs returns the vectors which make up the four corners of this tile
+func GetTileVecs(tile *Tile) []Vec2 {
+	return []Vec2{
+		{float64(tile.Position.X) + tilePoints[0].X, float64(tile.Position.Y) + tilePoints[0].Y},
+		{float64(tile.Position.X) + tilePoints[1].X, float64(tile.Position.Y) + tilePoints[1].Y},
+		{float64(tile.Position.X) + tilePoints[2].X, float64(tile.Position.Y) + tilePoints[2].Y},
+		{float64(tile.Position.X) + tilePoints[3].X, float64(tile.Position.Y) + tilePoints[3].Y},
+	}
+}
+
+// GetTileLines returns the lines that make up the square which is this tile
+func GetTileLines(tile *Tile) []Line {
+	vecs := GetTileVecs(tile)
+
+	return []Line{
+		{vecs[tileLines[0][0]], vecs[tileLines[0][1]]},
+		{vecs[tileLines[1][0]], vecs[tileLines[1][1]]},
+		{vecs[tileLines[2][0]], vecs[tileLines[2][1]]},
+		{vecs[tileLines[3][0]], vecs[tileLines[3][1]]},
+	}
+}
+
 func LineIntersectsTile(line Line, tile *Tile) bool {
-
-	// when vecs added to tile pos will get the 4 tile points
-	points := []Vec2{
-		{-0.5, -0.5},
-		{0.5, -0.5},
-		{0.5, 0.5},
-		{-0.5, 0.5},
-	}
-
-	// indices of the tile points that make the tile lines
-	lines := [][]int{
-		{0, 1},
-		{1, 2},
-		{2, 3},
-		{3, 0},
-	}
-
-	tileVecs := []Vec2{
-		{float64(tile.Position.X) + points[0].X, float64(tile.Position.Y) + points[0].Y},
-		{float64(tile.Position.X) + points[1].X, float64(tile.Position.Y) + points[1].Y},
-		{float64(tile.Position.X) + points[2].X, float64(tile.Position.Y) + points[2].Y},
-		{float64(tile.Position.X) + points[3].X, float64(tile.Position.Y) + points[3].Y},
-	}
-
-	// calculate the lines around this tile
-	tileLines := []Line{
-		{tileVecs[lines[0][0]], tileVecs[lines[0][1]]},
-		{tileVecs[lines[1][0]], tileVecs[lines[1][1]]},
-		{tileVecs[lines[2][0]], tileVecs[lines[2][1]]},
-		{tileVecs[lines[3][0]], tileVecs[lines[3][1]]},
-	}
+	tileLines := GetTileLines(tile)
 
 	for _, tileLine := range tileLines {
 		if LinesIntersect(line, tileLine) {
+			return true
+		}
+	}
+
+	return false
+}
+
+func LineIntersectsTileTol(line Line, tile *Tile, tolerance float64) bool {
+	tileLines := GetTileLines(tile)
+
+	for _, tileLine := range tileLines {
+		if LinesIntersectTol(line, tileLine, tolerance) {
 			return true
 		}
 	}

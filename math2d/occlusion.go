@@ -4,6 +4,28 @@ import (
 	"github.com/apsdsm/godungeon/game"
 )
 
+func FindVisibleTilesRad(start *game.Tile, tiles [][]game.Tile) {
+	// maxDist := 10
+	// potentials := game.TilesInRange(start, tiles, maxDist)
+
+	// rays := 100
+
+	// incr := 360.0 / float64(rays)
+
+	// angle := float64(0)
+
+	// rayLines := make([]game.Line, rays)
+
+	// up :=
+
+	// for i := 0; i < rays; i++ {
+	// 	angleRads := (math.Pi / 180) * angle
+
+	// 	angle += incr
+	// }
+
+}
+
 // FindVisibleTiles finds all the tiles which are visible from a given starting point
 func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 
@@ -43,8 +65,8 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 		{-0.51, 0.51},
 	}
 
-	// generate the vector for the start tile
-	startVec := game.Vec2{float64(start.Position.X), float64(start.Position.Y)}
+	// vector of start tile position
+	startVec := start.Center()
 
 	// for each potentially visible tile, check to see if we can draw a line
 	// from the start tile to that line where each tile intersected by that
@@ -53,8 +75,20 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 	// drawn to the potential, that tile is deemed visible.
 	for _, p := range potentials {
 
+		var tileVecs []game.Vec2
+		var linesToTile []game.Line
+
+		// if p.Walkable {
+		// 	tileVecs = []game.Vec2{
+		// 		p.Center(),
+		// 	}
+		// } else {
+		// 	a := p.Coords()
+		// 	tileVecs = a[:]
+		// }
+
 		// calculate the points around the potential
-		tileVecs := []game.Vec2{
+		tileVecs = []game.Vec2{
 			{float64(p.Position.X) + points[0].X, float64(p.Position.Y) + points[0].Y},
 			{float64(p.Position.X) + points[1].X, float64(p.Position.Y) + points[1].Y},
 			{float64(p.Position.X) + points[2].X, float64(p.Position.Y) + points[2].Y},
@@ -65,17 +99,25 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 			{float64(p.Position.X) + points[7].X, float64(p.Position.Y) + points[7].Y},
 		}
 
-		// the lines that lead from the start tile to the four corners of this tile
-		linesToTile := []game.Line{
-			{startVec, tileVecs[0]},
-			{startVec, tileVecs[1]},
-			{startVec, tileVecs[2]},
-			{startVec, tileVecs[3]},
-			{startVec, tileVecs[4]},
-			{startVec, tileVecs[5]},
-			{startVec, tileVecs[6]},
-			{startVec, tileVecs[7]},
+		// tileCoords := p.Coords()
+		// tileVecs = tileCoords[:]
+
+		//make a line from each check vector to the center of the start tile
+		for v := range tileVecs {
+			linesToTile = append(linesToTile, game.Line{startVec, tileVecs[v]})
 		}
+
+		// // // the lines that lead from the start tile to the four corners of this tile
+		// linesToTile = []game.Line{
+		// 	{startVec, tileVecs[0]},
+		// 	{startVec, tileVecs[1]},
+		// 	{startVec, tileVecs[2]},
+		// 	{startVec, tileVecs[3]},
+		// 	{startVec, tileVecs[4]},
+		// 	{startVec, tileVecs[5]},
+		// 	{startVec, tileVecs[6]},
+		// 	{startVec, tileVecs[7]},
+		// }
 
 		var visible bool
 
@@ -87,7 +129,7 @@ func FindVisibleTiles(start *game.Tile, tiles [][]game.Tile) {
 					continue
 				}
 
-				if game.LineIntersectsTile(line, p2) {
+				if game.LineIntersectsTileTol(line, p2, 0) {
 					if !p2.Walkable {
 						visible = false
 						break

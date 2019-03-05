@@ -144,6 +144,32 @@ var _ = Describe("Math", func() {
 		})
 	})
 
+	Describe("LinesIntersectT", func() {
+		Context("Given two lines that are tangent at one point", func() {
+			It("Returns false if the threshold is above 0", func() {
+
+				// l1 -----
+				// l2 \
+				//      \
+				//        \
+				//
+
+				l1 := Line{
+					Vec2{0, 0},
+					Vec2{3, 0},
+				}
+
+				l2 := Line{
+					Vec2{0, 0},
+					Vec2{3, 3},
+				}
+
+				Expect(LinesIntersectTol(l1, l2, 0.05)).To(BeFalse())
+				Expect(LinesIntersectTol(l1, l2, 0)).To(BeTrue())
+			})
+		})
+	})
+
 	Describe("TilesInRange method", func() {
 		Context("Given a map of tiles", func() {
 			It("Returns tiles that are in range of given tile", func() {
