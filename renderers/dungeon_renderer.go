@@ -56,10 +56,10 @@ func (d *DungeonRenderer) Render() {
 		}
 	}
 
-	math2d.FindVisibleTiles(d.player.Tile, d.dungeon.Tiles)
+	math2d.FindVisibleTiles2(d.player.Tile, d.dungeon.Tiles)
 
-	visbStyle := tcell.StyleDefault.Foreground(game.White).Background(game.Orange)
-	seenStyle := tcell.StyleDefault.Foreground(game.Grey).Background(game.Green)
+	visbStyle := tcell.StyleDefault.Foreground(game.White).Background(tcell.ColorGrey)
+	seenStyle := tcell.StyleDefault.Foreground(game.Grey).Background(tcell.ColorBlack)
 
 	for x := 0; x < len(d.dungeon.Tiles); x++ {
 		for y := 0; y < len(d.dungeon.Tiles[x]); y++ {

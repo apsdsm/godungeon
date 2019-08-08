@@ -1,6 +1,8 @@
 package math2d
 
 import (
+	"math"
+
 	"github.com/apsdsm/godungeon/game"
 )
 
@@ -24,6 +26,81 @@ func FindVisibleTilesRad(start *game.Tile, tiles [][]game.Tile) {
 	// 	angle += incr
 	// }
 
+}
+
+func FindVisibleTiles2(start *game.Tile, tiles [][]game.Tile) {
+	checks := 360
+	maxDist := 10.0
+	center := start.Center()
+	up := game.Vec2MulF(game.Vec2Up(), maxDist)
+
+	// potential tiles that might be seen
+	potentials := game.TilesInRange(start, tiles, int(maxDist))
+	visibleList := make(map[*game.Tile]bool)
+
+	// we're going to draw a line out from the main tile upwards, at the max distance the player can see
+	deg := 0.0
+
+	for c := 0; c < checks; c++ {
+
+		rad := game.DegToRad(deg)
+		cos := math.Cos(rad)
+		sin := math.Sin(rad)
+		x := up.X*cos - up.Y*sin
+		y := up.X*sin + up.Y*cos
+
+		b := game.Vec2{x, y}
+		b = game.Vec2Add(center, b)
+
+		check := game.Line{
+			A: center,
+			B: b,
+		}
+
+		deg += 360.0 / float64(checks)
+
+		for _, p := range potentials {
+
+			// if this tile is already in the visible list, there's no need to check it again
+			if _, exists := visibleList[p]; exists {
+				continue
+			}
+
+			// if line doesn't intersect with this tile, it's none of our business
+			if !game.LineIntersectsTile(check, p) {
+				continue
+			}
+
+			p1dist := game.TDist(start, p)
+			visible := true
+
+			for _, p2 := range potentials {
+
+				// if p and p2 are the sae thing, we just assume its ok and move on
+				if p == p2 {
+					continue
+				}
+
+				p2dist := game.TDist(start, p2)
+
+				// if this tile is farther away than the tile we're interested it, it doesn't factor into th check
+				if p2dist > p1dist {
+					continue
+				}
+
+				// if p2 intersects and is not walkable (that is, something solid) then we wouldn't be able to see p1 through it
+				if game.LineIntersectsTile(check, p2) && !p2.Walkable {
+					visible = false
+					break
+				}
+			}
+
+			if visible {
+				visibleList[p] = true
+				p.Visible = true
+			}
+		}
+	}
 }
 
 // FindVisibleTiles finds all the tiles which are visible from a given starting point

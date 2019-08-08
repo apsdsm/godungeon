@@ -27,9 +27,22 @@ func TDist(from, to *Tile) int {
 	return int(xdis + ydis)
 }
 
+// DegToRad converts dgrees to radians
+func DegToRad(deg float64) float64 {
+	return deg * math.Pi / 180
+}
+
 type Vec2 struct {
 	X float64
 	Y float64
+}
+
+func Vec2Up() Vec2 {
+	return Vec2{0, 1}
+}
+
+func Vec2Zero() Vec2 {
+	return Vec2{0, 0}
 }
 
 func Vec2Sub(a, b Vec2) Vec2 {
@@ -83,7 +96,6 @@ func TDeg(from, to *Tile) float64 {
 }
 
 func TVis(from, to *Tile) bool {
-
 	return true
 }
 
