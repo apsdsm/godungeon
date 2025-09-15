@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/apsdsm/canvas"
-	"github.com/apsdsm/canvas/painter"
-
 	"github.com/gdamore/tcell"
 
+	"github.com/apsdsm/godungeon/canvas"
+	"github.com/apsdsm/godungeon/canvas/painter"
 	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/debug"
 	"github.com/apsdsm/godungeon/file"

@@ -15,7 +15,7 @@
 package renderers
 
 import (
-	"github.com/apsdsm/canvas"
+	"github.com/apsdsm/godungeon/canvas"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/gdamore/tcell"
 )
