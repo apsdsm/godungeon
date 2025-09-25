@@ -1,0 +1,25 @@
+metadata:
+      title: Simple Map
+      description: A simple map with a few obstacles.
+      tiles:
+            a:
+                  type: traversable
+                  color: green
+                  name: grass
+            d: 
+                  type: door
+                  color: brown
+                  name: door
+
+map: |
+      aaaaaaaaaaaaaa
+      aaaaaaaaaaaaaa
+      aaaaaaaaaaaaaa
+      aaaaaaaaaaaaaa
+            d                                      
+            a           aaaaaaaaaaaaaaa                                       
+            aaaaaaaaaaadaaaaaaaaaaaaaaa            aaaaaaaaaaaa
+                        aaaaaaaaaaaaaaa            aaaaaaaaaaaa
+                        aaaaaaaaaaaaaaadaaaaaaaaaadaaaaaaaaaaaa
+                        aaaaaaaaaaaaaaa            aaaaaaaaaaaa           
+

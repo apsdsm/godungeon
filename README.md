@@ -31,3 +31,9 @@ library.
 **input** contains representations of user input, and provides the
 interface for retrieving input events.
 
+memo:
+
+░ (ASCII code 176): Low density dotted block
+▒ (ASCII code 177): Medium density dotted block
+▓ (ASCII code 178): High density dotted block
+█ (ASCII code 219): Solid block (no dots) 

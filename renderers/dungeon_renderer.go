@@ -17,7 +17,6 @@ package renderers
 import (
 	"github.com/apsdsm/godungeon/canvas"
 	"github.com/apsdsm/godungeon/game"
-	"github.com/apsdsm/godungeon/math2d"
 	"github.com/gdamore/tcell"
 )
 
@@ -49,14 +48,14 @@ func NewDungeonRenderer(config DungeonRendererConfig) *DungeonRenderer {
 func (d *DungeonRenderer) Render() {
 	d.layer.Clear()
 
-	// clear visibility of tiles
-	for x := 0; x < len(d.dungeon.Tiles); x++ {
-		for y := 0; y < len(d.dungeon.Tiles[x]); y++ {
-			d.dungeon.Tiles[x][y].Visible = false
-		}
-	}
+	// // clear visibility of tiles
+	// for x := 0; x < len(d.dungeon.Tiles); x++ {
+	// 	for y := 0; y < len(d.dungeon.Tiles[x]); y++ {
+	// 		d.dungeon.Tiles[x][y].Visible = false
+	// 	}
+	// }
 
-	math2d.FindVisibleTiles2(d.player.Tile, d.dungeon.Tiles)
+	// math2d.FindVisibleTiles2(d.player.Tile, d.dungeon.Tiles)
 
 	visbStyle := tcell.StyleDefault.Foreground(game.White).Background(tcell.ColorGrey)
 	seenStyle := tcell.StyleDefault.Foreground(game.Grey).Background(tcell.ColorBlack)

@@ -8,13 +8,10 @@ import (
 
 	"github.com/apsdsm/godungeon/canvas"
 	"github.com/apsdsm/godungeon/canvas/painter"
-	"github.com/apsdsm/godungeon/controllers"
 	"github.com/apsdsm/godungeon/debug"
-	"github.com/apsdsm/godungeon/file"
 	"github.com/apsdsm/godungeon/game"
 	"github.com/apsdsm/godungeon/input"
 	"github.com/apsdsm/godungeon/renderers"
-	"github.com/apsdsm/godungeon/updaters"
 )
 
 var (
@@ -27,6 +24,7 @@ var (
 )
 
 func main() {
+
 	// initialize the screen
 	screen, width, height = createAndInitScreen()
 
@@ -35,61 +33,64 @@ func main() {
 
 	// create game layers
 	mapLayer = canvas.NewLayer(width, height, 0, 0)
-	entityLayer = canvas.NewLayer(width, height, 0, 0)
-	consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
+	//entityLayer = canvas.NewLayer(width, height, 0, 0)
+	//consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
 
 	// add layers to canvas
 	gameCanvas.AddLayer(&mapLayer)
-	gameCanvas.AddLayer(&entityLayer)
-	gameCanvas.AddLayer(&consoleLayer)
+	//gameCanvas.AddLayer(&entityLayer)
+	//gameCanvas.AddLayer(&consoleLayer)
 
 	// set up input
 	inputHandler := input.NewHandler(screen)
 
 	// set up objects
-	dungeon := file.LoadMap("fixtures/maps/simple.json")
+	//dungeon := file.LoadMap("fixtures/maps/simple.json")
+
+	dungeon := game.NewDungeon(40, 20)
+	dungeon.FillUp()
 
 	// set up renderers
 	mapRenderer := renderers.NewDungeonRenderer(renderers.DungeonRendererConfig{
-		Dungeon: dungeon,
+		Dungeon: &dungeon,
 		Layer:   &mapLayer,
-		Player:  &dungeon.Actors[0],
+		Player:  nil, //&dungeon.Actors[0],
 	})
 
-	entityRenderer := renderers.NewActorRenderer(
-		&dungeon.Actors,
-		&mapLayer,
-	)
+	// entityRenderer := renderers.NewActorRenderer(
+	// 	&dungeon.Actors,
+	// 	&mapLayer,
+	// )
 
-	// set up controllers
-	actorController := controllers.NewActorController(controllers.ActorControllerConfig{})
+	// // set up controllers
+	// actorController := controllers.NewActorController(controllers.ActorControllerConfig{})
 
-	// set up updaters
-	player := updaters.NewPlayer(updaters.PlayerConfig{
-		Actor:           &dungeon.Actors[0],
-		Input:           &inputHandler,
-		ActorController: &actorController,
-	})
+	// // set up updaters
+	// player := updaters.NewPlayer(updaters.PlayerConfig{
+	// 	Actor:           &dungeon.Actors[0],
+	// 	Input:           &inputHandler,
+	// 	ActorController: &actorController,
+	// })
 
-	mobs := updaters.NewMobAi(updaters.MobAiConfig{
-		Player: &dungeon.Actors[0],
-		Mobs:   &dungeon.Actors,
-	})
+	// mobs := updaters.NewMobAi(updaters.MobAiConfig{
+	// 	Player: &dungeon.Actors[0],
+	// 	Mobs:   &dungeon.Actors,
+	// })
 
-	// bind player movement <- should be in config object, loaded from config file
-	player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
-	player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
-	player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)
-	player.BindMovement(input.NewKey(input.KeyLeft, 0), game.W)
+	// // bind player movement <- should be in config object, loaded from config file
+	// player.BindMovement(input.NewKey(input.KeyUp, 0), game.N)
+	// player.BindMovement(input.NewKey(input.KeyRight, 0), game.E)
+	// player.BindMovement(input.NewKey(input.KeyDown, 0), game.S)
+	// player.BindMovement(input.NewKey(input.KeyLeft, 0), game.W)
 
 	// initial render of content to layers
 	mapRenderer.Render()
-	entityRenderer.Render()
+	//entityRenderer.Render()
 	gameCanvas.Draw()
 
 	// main game loop
 	for {
-		// update input
+		// // update input
 		inputHandler.Update()
 
 		// quit if user presses 'q' <- temporary code until a main menu system is in place
@@ -98,15 +99,15 @@ func main() {
 		}
 
 		// update updaters <- should be triggering these from a loop
-		player.Update()
-		mobs.Update()
+		// player.Update()
+		// mobs.Update()
 
 		// lear layer <- should only do this if dirty
-		entityLayer.Clear()
+		//entityLayer.Clear()
 
 		// update renderers <- should only do this if dirty
 		mapRenderer.Render()
-		entityRenderer.Render()
+		// entityRenderer.Render()
 
 		// render the cosole <- should only do this if dirty
 		renderConsole()

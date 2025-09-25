@@ -14,6 +14,8 @@
 
 package game
 
+import "math/rand"
+
 // A Dungeon contains a grid of tiles
 type Dungeon struct {
 	Width           int
@@ -47,4 +49,53 @@ func (d *Dungeon) At(x, y int) *Tile {
 // InBounds returns true if the position is inside the dungeon
 func (d *Dungeon) InBounds(x, y int) bool {
 	return 0 <= x && x < d.Width && 0 <= y && y < d.Height
+}
+
+// Fill up the space with tiles
+func (d *Dungeon) FillUp() {
+
+	type runeweight struct {
+		r rune
+		w float64
+	}
+
+	runes := []runeweight{
+		{'█', 0.6},
+		{'▓', 0.2},
+		{'▒', 0.1},
+		{'░', 0.1},
+	}
+
+	weight := 0.0
+
+	for _, rw := range runes {
+		weight += rw.w
+	}
+
+	for x := 0; x < d.Width; x++ {
+		for y := 0; y < d.Height; y++ {
+
+			w := rand.Float64() * weight
+			cumulative := 0.0
+
+			var chosen rune
+
+			for _, r := range runes {
+				cumulative += r.w
+				if w < cumulative {
+					chosen = r.r
+					break
+				}
+			}
+
+			d.Tiles[x][y] = Tile{
+				Position: Position{x, y},
+				Walkable: false,
+				Visible:  true,
+				Seen:     false,
+				Rune:     chosen,
+				//Color:    tcell.Color(colors[(x+y)%len(colors)]),
+			}
+		}
+	}
 }
