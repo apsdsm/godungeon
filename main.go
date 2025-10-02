@@ -21,6 +21,7 @@ var (
 	mapLayer      canvas.Layer
 	entityLayer   canvas.Layer
 	consoleLayer  canvas.Layer
+	worldSize     = 1000
 )
 
 func main() {
@@ -31,7 +32,9 @@ func main() {
 	// create game canvas
 	gameCanvas = canvas.NewCanvas(screen)
 
-	// create game layers
+	// I wonder, could you make a very large world, and then have it loop around the edges?
+
+	// create game layers - this is what we draw into
 	mapLayer = canvas.NewLayer(width, height, 0, 0)
 	//entityLayer = canvas.NewLayer(width, height, 0, 0)
 	//consoleLayer = canvas.NewLayer(width, 10, 0, height-11)
@@ -47,7 +50,7 @@ func main() {
 	// set up objects
 	//dungeon := file.LoadMap("fixtures/maps/simple.json")
 
-	dungeon := game.NewDungeon(40, 20)
+	dungeon := game.NewDungeon(worldSize, worldSize)
 	dungeon.FillUp()
 
 	// set up renderers
