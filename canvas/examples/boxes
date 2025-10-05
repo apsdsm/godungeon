@@ -1,0 +1,103 @@
+tabs:
+
+a tab box should look like this with the first element selected
+┌─────┬─────┬─────┐
+| foo | bar | baz |
+|     └─────┴─────┴─────────┐
+|                           |
+|                           |
+└───────────────────────────┘
+
+like this with a middle element selected
+┌─────┬─────┬─────┐
+| foo | bar | baz |
+┢─────┘     └─────┴─────────┐
+|                           |
+|                           |
+└───────────────────────────┘
+
+like this with the last element selected
+┌─────┬─────┬─────┐
+| foo | bar | baz |
+┢─────┴─────┘     └─────────┐
+|                           |
+|                           |
+└───────────────────────────┘
+
+like this if there are two elements only, and the last element is selected
+┌─────┬─────┐
+| foo | bar |
+┢─────┘     └───────────────┐
+|                           |
+|                           |
+└───────────────────────────┘
+
+this would be the minimum size for a tab box with two tabs with these names.
+┌─────┬─────┐
+| foo | bar |
+┢─────┘     |
+|           |
+|           |
+└───────────┘
+
+menus:
+
+A menu with a train pull style menu, a little way down the contained text
+┌───────────┐
+|          ┌┴┐
+|          | |
+|          └┬┘
+|           |
+└───────────┘
+
+A menu with a train pull style menu, all the way to the bottom
+┌───────────┐
+|           |
+|           |
+|          ┌┴┐
+|          | |
+└──────────┴─┘
+
+A menu with a train pull style menu, all the way to the top
+┌──────────┬─┐
+|          | |
+|          └┬┘
+|           |
+|           |
+└───────────┘
+
+A menu with a ball style menu. represents distance to bottom
+┌───────────┐
+|           ●
+|           |
+|           |
+|           |
+└───────────┘
+
+A menu with a arrow style menu. represents directions in which content
+can be scrolled
+┌───────────┐
+|           △
+|           ▢
+|           ▽
+|           |
+└───────────┘
+
+The size of the train represents how much of the text can be shown at any given
+time in the constraints of the window. The position of the train represents the
+current position of the viewable text relative to the total ammount of text.
+
+This is obvious stuff. The harder part is to figure out how how much of the train
+should be showing at any given time.
+
+let lines of text = lines
+let size of the box = boxsize
+inside boxsize, we can only use boxsize-2 lines, since we draw the top and bottom lines
+let boxsize-2 = drawLines
+so the ammount of text we can show is roughly drawlines/lines => 0.4 or something
+
+next we need to figure out the train size.
+the problem is we have so little room to draw with. the minimum length a scrollbar
+can be is 2, so 2 needs to represent anything from an accurate display but also any
+larger quantities of text also. this means that for large chunks of text the scrollbar
+might not move at all... which is not what we want.
